@@ -1,191 +1,163 @@
 .support {
-  width: 100%;
   position: relative;
-}
+  background: var(--color-white);
+  padding: var(--spacing-3xl) 0;
 
-/* ===================== */
-/* ВЕРХНЯЯ БЕЛАЯ ЗОНА */
-/* ===================== */
+  // Добавляем z-index для всей секции
+  &__header,
+  &__grid {
+    position: relative;
+    z-index: 2;  // ← КАРТОЧКИ И ЗАГОЛОВОК НАД ТЕМНОЙ СЕКЦИЕЙ
+  }
 
-.support__top {
-  background-color: #ffffff;
-  padding: 90px 0 120px;
-  position: relative;
-  z-index: 2;
-}
+  &__header {
+    text-align: center;
+    margin-bottom: var(--spacing-3xl);
+  }
 
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-lg);
+    
+    @media (min-width: 768px) {
+      font-size: 3rem;
+    }
+  }
 
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
 
-.support__title {
-  text-align: center;
-  font-size: 40px;
-  line-height: 1.2;
-  font-weight: 600;
-  color: #0b1220;
-  margin-bottom: 56px;
-  transform: translateY(350px);
-}
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0;
+    }
 
-/* ===== GRID ===== */
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
 
-.support__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-  max-width: 1280px;
-  margin: 0 auto;
-
-  transform: translateY(320px); // 🔥 ВОТ ЭТО
-  position: relative;
-  z-index: 3;
-}
-
-
-
-/* ===== CARD ===== */
-
-.support-card {
-  background-color: #ffffff;
-  padding: 26px;
-  min-height: 210px;
-  position: relative;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
-}
-
-.support-card__number {
-  font-size: 12px;
-  color: #9aa0a6;
-}
-
-.support-card__title {
-  margin-top: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #0b1220;
-}
-
-.support-card__text {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #6b7280;
-  line-height: 1.4;
-}
-
-.support-card__decor {
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
-  pointer-events: none;
-}
-
-.support-card__decor {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  width: 60px; // или auto
-  height: auto;
-  pointer-events: none;
-}
-
-.support__laptop {
-  max-width: 520px;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-  transform: translateY(-250px);
-  transform: translateX(-365px);
-}
-
-
-
-/* ===================== */
-/* НИЖНЯЯ ТЁМНАЯ ЗОНА */
-/* ===================== */
-
-.support__bottom {
-  position: relative;
-  background-color: #0b1220;
-  padding: 200px 0 120px; // верхний padding больше
-  overflow: hidden;
-  z-index: 1;
-}
-
-
-.support__bg-shape {
-  position: absolute;
-  right: -200px;
-  top: 0;
-  height: 100%;
-  opacity: 0.25;
-}
-
-.support__bottom-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 80px;
-  position: relative;
-  z-index: 2;
-}
-
-.support__interface {
-  max-width: 100%;
-}
-
-.support__bottom-title {
-  font-size: 36px;
-  line-height: 1.2;
-  color: #ffffff;
-  margin-bottom: 32px;
-  max-width: 460px;
-}
-
-.support__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.support__item {
-  position: relative;
-  padding-left: 18px;
-  margin-bottom: 20px;
-  font-size: 15px;
-  color: #cbd5e1;
-  line-height: 1.5;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 4px;
-    width: 3px;
+  &-card {
+    background: var(--color-white);
+    border-radius: 0;
+    padding: var(--spacing-xl);
     height: 100%;
-    background-color: #ff3b30;
+    position: relative;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    &__number {
+      font-size: 0.875rem;
+      color: var(--color-gray);
+      letter-spacing: 0.02em;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    &__title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--color-dark);
+      margin-bottom: var(--spacing-sm);
+      flex: 1;
+    }
+
+    &__text {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: var(--color-gray-light);
+    }
+
+    &__decor {
+      position: absolute;
+      right: var(--spacing-sm);
+      bottom: var(--spacing-sm);
+      width: 48px;
+      height: 48px;
+      opacity: 0.8;
+    }
   }
-}
 
-/* ===================== */
-/* АДАПТИВ */
-/* ===================== */
-
-@media (max-width: 1024px) {
-  .support__grid {
-    grid-template-columns: repeat(2, 1fr);
+  &__dark {
+    margin-top: -150px;  // ← ВОЗВРАЩАЕМ НАЕЗД
+    padding: 220px 0 140px;  // ← ВОЗВРАЩАЕМ ПАДДИНГИ
+    background: var(--color-dark);
+    position: relative;
+    overflow: hidden;  // ← ВОЗВРАЩАЕМ OVERFLOW
+    z-index: 1;  // ← ТЕМНАЯ СЕКЦИЯ ПОД КАРТОЧКАМИ
   }
 
-  .support__bottom-content {
+  &__dark-content {
+    display: grid;
     grid-template-columns: 1fr;
-  }
-}
+    gap: var(--spacing-2xl);
+    align-items: center;
 
-@media (max-width: 600px) {
-  .support__grid {
-    grid-template-columns: 1fr;
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-3xl);
+    }
   }
 
-  .support__title,
-  .support__bottom-title {
+  &__info {
     text-align: left;
+    
+    // @media (min-width: 1024px) {
+    //   text-align: right;
+    //   margin-left: auto;
+    // }
+  }
+
+  &__bottom-title {
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 600;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-xl);
+    
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  &__item {
+    position: relative;
+    padding-left: 20px;  
+    margin-bottom: 22px;  
+    font-size: 15px;  
+    line-height: 1.55;  
+    color: #cbd5e1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 3px; 
+      height: calc(100% - 6px);  
+      background: #ff3b30;
+      border-radius: 0; 
+    }
   }
 }

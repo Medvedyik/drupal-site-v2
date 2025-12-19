@@ -217,39 +217,40 @@
   </div>
 </section>
 
-<section class="support">
-  <!-- ВЕРХНЯЯ БЕЛАЯ ЗОНА -->
-  <div class="support__top">
-    <div class="container">
-      <h2 class="support__title">
-        Поддержка<br />
-        от Drupal-coder
-      </h2>
 
-      <div class="support__grid">
-        <!-- 01 -->
-        <article class="support-card">
-          <span class="support-card__number">01.</span>
-          <h3 class="support-card__title">Постановка задач по Email</h3>
-          <p class="support-card__text">
-            удобная и привычная модель постановки задач
-          </p>
-          <img
-            src="/images/support/support1.svg"
-            alt=""
-            aria-hidden="true"
-            class="support-card__decor"
-          />
-        </article>
+<section class="support section">
+  <div class="container">
+    <!-- Добавляем заголовок -->
+    <div class="support__header">
+      <h2 class="support__title">Поддержка от Drupal-coder</h2>
+    </div>
 
-        <!-- 02 -->
+    <!-- Убираем лишний вложенный div и исправляем сетку -->
+    <div class="support__grid">
+      <!-- Карточки остаются без изменений, но без лишней обертки -->
+      <article class="support-card">
+        <span class="support-card__number">01.</span>
+        <h3 class="support-card__title">Постановка задач по Email</h3>
+        <p class="support-card__text">
+          Удобная и привычная модель постановки задач, при которой задачи фиксируются и никогда не теряются.
+        </p>
+        <img
+          src="/images/support/support1.svg"
+          alt=""
+          aria-hidden="true"
+          class="support-card__decor"
+        />
+      </article>
+
+      <!-- 02 -->
         <article class="support-card">
           <span class="support-card__number">02.</span>
           <h3 class="support-card__title">
             Система Helpdesk – отчетность, прозрачность
           </h3>
           <p class="support-card__text">
-            контроль задач, история и личный кабинет
+            Возможность посмотреть все заявки в работе
+
           </p>
           <img
             src="/images/support/support2.svg"
@@ -352,52 +353,40 @@
             class="support-card__decor"
           />
         </article>
-      </div>
     </div>
   </div>
 
-  <!-- НИЖНЯЯ ТЁМНАЯ ЗОНА -->
-  <div class="support__bottom">
-    <!-- декоративный фон справа -->
-    <img
-      src="/images/decor/support-bg-shape.png"
-      alt=""
-      class="support__bg-shape"
-    />
+  <!-- Тёмная часть с исправленной структурой -->
+  <div class="support__dark">
+    <div class="container">
+      <div class="support__dark-content">
+        <!-- Пустая колонка слева для десктопа -->
+        <div class="support__placeholder"></div>
+        
+        <!-- Перемещаем info в правую часть -->
+        <div class="support__info">
+          <h2 class="support__bottom-title">
+            Экспертиза в Drupal,<br />
+            опыт 14 лет!
+          </h2>
 
-    <div class="container support__bottom-content">
-      <!-- скрин интерфейса слева -->
-      <img
-  src="/images/content/laptop.png"
-  alt=""
-  aria-hidden="true"
-  class="support__laptop"
-/>
-
-      <div class="support__info">
-        <h2 class="support__bottom-title">
-          Экспертиза в Drupal,<br />
-          опыт 14 лет!
-        </h2>
-
-        <ul class="support__list">
-          <li class="support__item">
-            Только системный подход — контроль версий,
-            резервирование и тестирование
-          </li>
-          <li class="support__item">
-            Только Drupal сайты, не берём на поддержку сайты
-            на других CMS
-          </li>
-        </ul>
+          <ul class="support__list">
+            <li class="support__item">
+              Только системный подход — контроль версий,
+              резервирование и тестирование
+            </li>
+            <li class="support__item">
+              Только Drupal сайты, не берём на поддержку сайты
+              на других CMS
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-
     <main class="main">
-      <section class="support"></section>
       <section class="expertise"></section>
       <section class="plans"></section>
       <section class="team"></section>

@@ -68,7 +68,7 @@
 /* Карточка услуги */
 .service-card {
   background: var(--color-surface);
-  border-radius: var(--radius-lg);
+  border-radius: 0;
   padding: var(--spacing-xl);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   display: flex;
@@ -83,7 +83,7 @@
 
 .service-card__icon {
   margin-bottom: var(--spacing-lg);
-  width: 64px;  /* Можно сделать больше, если нужно */
+  width: 64px;
   height: 64px;
   display: flex;
   align-items: center;
@@ -92,18 +92,7 @@
   img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Важно! Сохраняет пропорции иконки */
-  }
-
-  /* Если иконки в SVG и нужно управлять цветом */
-  svg {
-    width: 100%;
-    height: 100%;
-    
-    /* Пример: сделать все пути одного цвета */
-    path, rect, circle {
-      fill: currentColor; /* Позволяет управлять цветом через color */
-    }
+    object-fit: contain;
   }
 }
 
@@ -130,6 +119,7 @@
     font-size: 1rem;
   }
 }
+
 /* Дополнительные адаптивные стили */
 @media (max-width: 767px) {
   .services__grid {
@@ -141,7 +131,6 @@
   }
 }
 
-/* Для очень маленьких экранов */
 @media (max-width: 374px) {
   .section-header__title {
     font-size: 1.5rem;

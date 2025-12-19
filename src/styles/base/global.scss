@@ -1,3 +1,4 @@
+// Используем CSS-переменные напрямую
 *,
 *::before,
 *::after {
@@ -8,9 +9,19 @@ body {
   margin: 0;
   font-family: var(--font-main);
   color: var(--color-text);
-  background-color: #fff;
+  background-color: var(--color-white);
+  line-height: 1.6;
 }
 
 .page {
   overflow: hidden;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+}
+
+.section {
+  padding: var(--spacing-3xl) 0;
 }
