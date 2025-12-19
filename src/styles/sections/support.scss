@@ -3,11 +3,10 @@
   background: var(--color-white);
   padding: var(--spacing-3xl) 0;
 
-  // Добавляем z-index для всей секции
   &__header,
   &__grid {
     position: relative;
-    z-index: 2;  // ← КАРТОЧКИ И ЗАГОЛОВОК НАД ТЕМНОЙ СЕКЦИЕЙ
+    z-index: 2;
   }
 
   &__header {
@@ -34,6 +33,9 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-sm);
+    
+    // Для одинаковой высоты карточек в строке
+    grid-auto-rows: 1fr;
 
     @media (min-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
@@ -48,13 +50,14 @@
   &-card {
     background: var(--color-white);
     border-radius: 0;
-    padding: var(--spacing-xl);
-    height: 100%;
+    padding: 24px 20px;
+    height: 100%; // Используем 100% высоты grid-ячейки
     position: relative;
     box-shadow: var(--shadow-md);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    min-height: 260px; // Минимальная высота для всех карточек
 
     &:hover {
       transform: translateY(-4px);
@@ -65,7 +68,7 @@
       font-size: 0.875rem;
       color: var(--color-gray);
       letter-spacing: 0.02em;
-      margin-bottom: var(--spacing-xs);
+      margin-bottom: 12px;
     }
 
     &__title {
@@ -73,34 +76,101 @@
       font-weight: 600;
       line-height: 1.4;
       color: var(--color-dark);
-      margin-bottom: var(--spacing-sm);
-      flex: 1;
+      margin-bottom: 12px;
+      flex: 0 0 auto; // Не растягиваем заголовок
     }
 
     &__text {
       font-size: 0.875rem;
       line-height: 1.5;
       color: var(--color-gray-light);
+      flex: 1; // Растягиваем текст, чтобы заполнить пространство
+      margin-bottom: 40px; // Отступ для иконки
     }
 
     &__decor {
-      position: absolute;
-      right: var(--spacing-sm);
-      bottom: var(--spacing-sm);
-      width: 48px;
-      height: 48px;
-      opacity: 0.8;
+    position: absolute;
+    right: 0;        // ← ВМЕСТО right: 20px
+    bottom: 0;      // ← ОСТАЁТСЯ bottom: 0 (убираем 20px)
+    width: 75px;    // ← УВЕЛИЧИВАЕМ РАЗМЕР (было 40px)
+    height: 75px;   // ← УВЕЛИЧИВАЕМ РАЗМЕР
+    opacity: 0.8;
     }
   }
 
   &__dark {
-    margin-top: -150px;  // ← ВОЗВРАЩАЕМ НАЕЗД
-    padding: 220px 0 140px;  // ← ВОЗВРАЩАЕМ ПАДДИНГИ
+    margin-top: -220px;
+    padding: 410px 0 150px;
     background: var(--color-dark);
     position: relative;
-    overflow: hidden;  // ← ВОЗВРАЩАЕМ OVERFLOW
-    z-index: 1;  // ← ТЕМНАЯ СЕКЦИЯ ПОД КАРТОЧКАМИ
+    overflow: hidden;
+    z-index: 1;
   }
+
+  // Стили для декораций
+&__decor-drupal {
+  position: absolute;
+  right: 0%;  // Частично выходит за правый край
+  top: 50%;
+  transform: translateY(-50%) rotate(-2deg);  // Поворот против часовой стрелки
+  width: 75%;  // Занимает 3/4 ширины темной зоны
+  height: auto;
+  max-width: 800px;  // Ограничиваем максимальный размер
+  // opacity: 0.15;  
+  pointer-events: none;  // Чтобы не мешало кликам
+  z-index: 1;  // Под контентом, но над фоном
+  
+  @media (max-width: 1024px) {
+    width: 60%;  // Меньше на планшетах
+    right: -15%;
+  }
+  
+  @media (max-width: 768px) {
+    width: 80%;  // Больше на мобильных, но скрываем частично
+    right: -30%;
+    opacity: 0.1;  // Еще более прозрачный
+  }
+}
+
+&__decor-laptop {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 35%;  // 1/5 от ширины темной зоны
+  height: auto;
+  max-width: 600px;  // Ограничиваем максимальный размер
+  z-index: 1;  // Под контентом, но над фоном
+  pointer-events: none;
+  
+  @media (max-width: 1024px) {
+    width: 25%;  // Чуть больше на планшетах
+  }
+  
+  @media (max-width: 768px) {
+    width: 30%;  // Еще больше на мобильных
+    opacity: 0.8;  // Чуть прозрачнее
+  }
+  
+  @media (max-width: 480px) {
+    width: 40%;  // На очень маленьких экранах
+    opacity: 0.6;
+  }
+}
+
+// Чтобы контент был поверх декораций
+&__dark-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+  position: relative;
+  z-index: 2;  // Контент над декорациями
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+  }
+}
 
   &__dark-content {
     display: grid;
@@ -116,11 +186,6 @@
 
   &__info {
     text-align: left;
-    
-    // @media (min-width: 1024px) {
-    //   text-align: right;
-    //   margin-left: auto;
-    // }
   }
 
   &__bottom-title {
@@ -143,10 +208,10 @@
 
   &__item {
     position: relative;
-    padding-left: 20px;  
-    margin-bottom: 22px;  
-    font-size: 15px;  
-    line-height: 1.55;  
+    padding-left: 20px;
+    margin-bottom: 22px;
+    font-size: 15px;
+    line-height: 1.55;
     color: #cbd5e1;
 
     &::before {
@@ -154,10 +219,10 @@
       position: absolute;
       left: 0;
       top: 6px;
-      width: 3px; 
-      height: calc(100% - 6px);  
+      width: 3px;
+      height: calc(100% - 6px);
       background: #ff3b30;
-      border-radius: 0; 
+      border-radius: 0;
     }
   }
 }
