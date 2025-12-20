@@ -1,7 +1,7 @@
 .support {
   position: relative;
   background: var(--color-white);
-  padding: var(--spacing-3xl) 0;
+  padding: var(--spacing-3xl) 0 0 0; /* ← УБИРАЕМ padding-bottom */
 
   &__header,
   &__grid {

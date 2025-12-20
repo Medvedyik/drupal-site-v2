@@ -35,15 +35,21 @@
   gap: 56px;
 }
 
+/* ОБНОВЛЕННЫЕ СТИЛИ ДЛЯ ЛОГО */
 .logo {
-  font-size: 20px;
-  font-weight: 700;
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  /* Удаляем старые текстовые стили */
 }
 
-.logo__accent {
-  color: #ffcc00;
-  margin-right: 6px;
+.logo__image {
+  height: 25px; /* Настройте высоту по вашему вкусу */
+  width: auto;
+  
+  @media (max-width: 768px) {
+    height: 32px; /* Чуть меньше на мобильных */
+  }
 }
 
 .menu {

@@ -29,9 +29,9 @@
     <!-- NAV -->
     <div class="header__nav">
       <div class="header__nav-left">
-        <div class="logo">
-          <span class="logo__accent">::</span>Drupal-coder
-        </div>
+        <a href="/" class="logo">
+          <img src="/images/header/drupal-coder.svg" alt="Drupal-coder" class="logo__image">
+        </a>
 
         <nav class="menu">
           <a href="#" class="menu__item menu__item--active">Поддержка сайтов</a>
@@ -341,9 +341,97 @@
 </div>
 </section>
 
+<section class="plans section">
+  <div class="container">
+    <!-- Заголовок секции -->
+    <div class="plans__header">
+      <h2 class="plans__title">Тарифы</h2>
+    </div>
+
+    <!-- Сетка карточек -->
+    <div class="plans__grid">
+      <!-- Карточка 1: Стартовый -->
+      <article class="plan-card">
+        <h3 class="plan-card__title">Стартовый</h3>
+        <div class="plan-card__price">
+          <span class="plan-card__amount">2000</span>
+          <span class="plan-card__currency">₽</span>
+        </div>
+        <p class="plan-card__period">в час</p>
+
+        <div class="plan-card__divider"></div>
+
+        <ul class="plan-card__features">
+          <li class="plan-card__feature">Предоплата от 2 часов</li>
+          <li class="plan-card__feature">Консультации и работы по SEO</li>
+          <li class="plan-card__feature">Услуги дизайнера</li>
+          <li class="plan-card__feature">Стандартное время реакции</li>
+          <li class="plan-card__feature">Неиспользованные оплаченные часы переносятся на следующий месяц</li>
+        </ul>
+
+        <button class="plan-card__button">Оставить заявку!</button>
+      </article>
+
+      <!-- Карточка 2: Бизнес -->
+      <article class="plan-card">
+        <h3 class="plan-card__title">Бизнес</h3>
+        <div class="plan-card__price">
+          <span class="plan-card__amount">2000</span>
+          <span class="plan-card__currency">₽</span>
+        </div>
+        <p class="plan-card__period">в час</p>
+
+        <div class="plan-card__divider"></div>
+
+        <ul class="plan-card__features">
+          <li class="plan-card__feature">Предоплата от 10 часов</li>
+          <li class="plan-card__feature">Консультации и работы по SEO</li>
+          <li class="plan-card__feature">Услуги дизайнера</li>
+          <li class="plan-card__feature">Высокое время реакции – до 2 рабочих дней</li>
+          <li class="plan-card__feature">Неиспользованные часы не переносятся</li>
+        </ul>
+
+        <button class="plan-card__button">Оставить заявку!</button>
+      </article>
+
+      <!-- Карточка 3: VIP -->
+      <article class="plan-card">
+        <h3 class="plan-card__title">VIP</h3>
+        <div class="plan-card__price">
+          <span class="plan-card__amount">1800</span>
+          <span class="plan-card__currency">₽</span>
+        </div>
+        <p class="plan-card__period">в час</p>
+
+        <div class="plan-card__divider"></div>
+
+        <ul class="plan-card__features">
+          <li class="plan-card__feature">Предоплата от 100 часов</li>
+          <li class="plan-card__feature">Консультации и работы по SEO</li>
+          <li class="plan-card__feature">Услуги дизайнера</li>
+          <li class="plan-card__feature">Максимальное время реакции – в день обращения</li>
+          <li class="plan-card__feature">Неиспользованные часы не переносятся</li>
+        </ul>
+
+        <button class="plan-card__button">Оставить заявку!</button>
+      </article>
+    </div>
+
+    <!-- Футер блока -->
+    <div class="plans__footer">
+      <p class="plans__footer-text">
+        Вам не подходят наши тарифы? Оставьте заявку и мы предложим вам индивидуальные условия!
+      </p>
+      <a href="#" class="plans__footer-link">Получить индивидуальный тариф</a>
+    </div>
+  </div>
+
+  <!-- Декоративная графика -->
+  <img src="/images/plans/drupal-graphic.svg" alt="" class="plans__decor" />
+</section>
+
     <main class="main">
       <section class="expertise"></section>
-      <section class="plans"></section>
       <section class="team"></section>
       <section class="cases"></section>
       <section class="reviews"></section>

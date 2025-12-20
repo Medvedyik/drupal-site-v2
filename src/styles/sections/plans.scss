@@ -1,0 +1,298 @@
+@use '../base/variables' as *;
+
+.plans {
+  position: relative;
+  background-color: #fefefe;
+  padding: 80px 0 var(--spacing-3xl) 0;
+  margin-top: -50px; /* ОТРИЦАТЕЛЬНЫЙ margin-top чтобы прилегать к support */
+  overflow: hidden;
+  z-index: 1;
+
+  .container {
+    position: relative;
+    z-index: 3; /* Повышаем z-index контента */
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 56px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  /* ОЧЕНЬ БОЛЬШАЯ SVG - ПОЧТИ НА ВЕСЬ ЭКРАН */
+  &__decor {
+    position: absolute;
+    right: -25%; /* Выводим сильно за правый край */
+    top: -25%; /* Выводим сильно за верхний край */
+    width: 150%; /* Занимает 150% ширины блока */
+    height: auto;
+    min-width: 1400px; /* Минимальная ширина 1400px */
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 1; /* Под контентом */
+
+    /* Для очень больших экранов делаем еще больше */
+    @media (min-width: 1920px) {
+      width: 120%;
+      min-width: 1800px;
+      right: -20%;
+      top: -20%;
+    }
+
+    @media (max-width: 1400px) {
+      width: 130%;
+      min-width: 1200px;
+      right: -30%;
+      top: -30%;
+    }
+
+    @media (max-width: 1024px) {
+      width: 140%;
+      min-width: 1000px;
+      right: -40%;
+      top: -25%;
+      opacity: 0.2;
+    }
+
+    @media (max-width: 768px) {
+      width: 160%;
+      min-width: 800px;
+      right: -60%;
+      top: -15%;
+      opacity: 0.15;
+    }
+
+    @media (max-width: 480px) {
+      width: 200%;
+      min-width: 600px;
+      right: -100%;
+      top: -10%;
+      opacity: 0.1;
+    }
+  }
+
+  /* Сетка карточек */
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; /* Карточки над SVG */
+
+    @media (max-width: 1024px) {
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      gap: 24px;
+    }
+  }
+
+  /* Футер блока */
+  &__footer {
+    text-align: center;
+    margin-top: 48px;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: 768px) {
+      margin-top: 40px;
+    }
+  }
+
+  &__footer-text {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+    line-height: 1.6;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__footer-link {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background-color: #e64500;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      padding: 12px 24px;
+      font-size: 0.9375rem;
+    }
+  }
+}
+
+/* Карточка тарифа */
+.plan-card {
+  background: white;
+  border-radius: 12px;
+  padding: 40px 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 3; /* Карточки над SVG */
+
+  &:hover {
+    transform: translateY(-16px) scale(1.06);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  }
+
+  @media (max-width: 1024px) {
+    padding: 32px 24px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 28px 20px;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff3b30;
+    margin: 0 0 12px 0;
+    text-align: center;
+
+    @media (max-width: 1024px) {
+      font-size: 1.375rem;
+    }
+  }
+
+  &__price {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &__amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--color-text);
+    line-height: 1;
+
+    @media (max-width: 1024px) {
+      font-size: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 2.75rem;
+    }
+  }
+
+  &__currency {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-left: 4px;
+
+    @media (max-width: 1024px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__period {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    margin-top: 8px;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: #e5e5e5;
+    margin: 24px 0;
+  }
+
+  &__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px 0;
+    flex-grow: 1;
+  }
+
+  &__feature {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 14px;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--color-text);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #ff3b30;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 0.875rem;
+      padding-left: 24px;
+    }
+  }
+
+  &__button {
+    padding: 16px;
+    border-radius: 8px;
+    border: 2px solid #ff3b30;
+    background-color: white;
+    color: #ff3b30;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9375rem;
+    letter-spacing: 0.5px;
+
+    .plan-card:hover & {
+      background-color: #ff3b30;
+      color: white;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      padding: 14px;
+      font-size: 0.875rem;
+    }
+  }
+}
