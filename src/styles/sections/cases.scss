@@ -1,0 +1,290 @@
+@use '../base/variables' as *;
+
+.cases {
+  background-color: white;
+  padding: var(--spacing-3xl) 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 48px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  /* Сетка карточек */
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 475px; /* фиксированная высота для всех карточек */
+    gap: 24px;
+    margin-bottom: 40px;
+
+    @media (max-width: 1024px) {
+      grid-auto-rows: 400px;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 350px;
+      gap: 20px;
+    }
+  }
+
+  /* Позиционирование карточек в сетке */
+  /* Первый ряд: image1 (1/3), image2 (2/3) */
+  .case-card:nth-child(1) { /* image1 */
+    grid-column: span 1;
+  }
+  
+  .case-card:nth-child(2) { /* image2 */
+    grid-column: span 2;
+  }
+  
+  /* Второй ряд: image3 (1/3), image4 (1/3), image5 (1/3) */
+  .case-card:nth-child(3),
+  .case-card:nth-child(4),
+  .case-card:nth-child(5) {
+    grid-column: span 1;
+  }
+  
+  /* Третий ряд: image6 (2/3), image7 (1/3) */
+  .case-card:nth-child(6) { /* image6 */
+    grid-column: span 2;
+  }
+  
+  .case-card:nth-child(7) { /* image7 */
+    grid-column: span 1;
+  }
+
+  /* На мобильных все карточки в одну колонку */
+  @media (max-width: 768px) {
+    .case-card {
+      grid-column: span 1 !important;
+    }
+  }
+
+  /* Кнопка "Показать ещё" */
+  &__more {
+    text-align: center;
+    
+    &-button {
+      display: inline-block;
+      padding: 14px 40px;
+      background-color: transparent;
+      color: #0b1220; /* темно-синий */
+      text-decoration: none;
+      font-weight: 400;
+      text-transform: uppercase;
+      border: 1px solid #d1d5db; /* тонкая серая обводка */
+      border-radius: 4px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+
+      &:hover {
+        border-color: #9ca3af; /* чуть темнее при наведении */
+        background-color: rgba(0, 0, 0, 0.02);
+        transform: translateY(-1px);
+      }
+
+      @media (max-width: 768px) {
+        padding: 12px 32px;
+        font-size: 0.8125rem;
+      }
+    }
+  }
+}
+
+/* Карточка кейса */
+.case-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  transition: transform 0.35s ease-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &:hover &__image {
+    &:after {
+      opacity: 0.3;
+    }
+  }
+
+  /* Карточка с текстом поверх изображения */
+  &--overlay {
+    .case-card__content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+      color: white;
+    }
+
+    .case-card__title,
+    .case-card__date {
+      color: white;
+    }
+  }
+
+  /* Карточка с текстом под изображением */
+  &--below {
+    display: flex;
+    flex-direction: column;
+
+    .case-card__image {
+      flex: 0 0 70%; /* изображение занимает 70% высоты */
+    }
+
+    .case-card__content {
+      flex: 1;
+      padding: 24px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-card__title {
+      color: var(--color-text);
+      margin-bottom: 8px;
+    }
+
+    .case-card__date {
+      color: var(--color-text-light);
+      margin-bottom: 12px;
+    }
+
+    .case-card__excerpt {
+      color: var(--color-text-light);
+      margin-top: auto; /* прижимаем описание к низу */
+    }
+  }
+
+  /* Изображение */
+  &__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+      opacity: 0.1;
+      transition: opacity 0.3s ease;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Для карточек с текстом под изображением */
+    .case-card--below & {
+      height: 70%; /* переопределяем для этого типа карточек */
+    }
+  }
+
+  /* Контент */
+  &__content {
+    z-index: 2;
+  }
+
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 0 8px 0;
+    max-width: 90%;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__date {
+    font-size: 0.875rem;
+    opacity: 0.8;
+    margin-bottom: 0;
+    display: block;
+
+    .case-card--overlay & {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  &__excerpt {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      font-size: 0.8125rem;
+    }
+  }
+}
+
+/* Адаптация для маленьких экранов */
+@media (max-width: 768px) {
+  .case-card {
+    &:hover {
+      transform: none; /* Отключаем увеличение на мобильных */
+    }
+
+    &--below {
+      .case-card__image {
+        flex: 0 0 60%; /* меньше изображение на мобильных */
+      }
+
+      .case-card__content {
+        padding: 16px;
+      }
+    }
+
+    &--overlay {
+      .case-card__content {
+        padding: 16px;
+      }
+    }
+  }
+}
+
+/* Адаптация для планшетов */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cases__grid {
+    grid-auto-rows: 400px;
+  }
+}
