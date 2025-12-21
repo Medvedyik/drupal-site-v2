@@ -10,6 +10,8 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
+  <!-- Подключаем стили выпадающего меню -->
+  <link rel="stylesheet" href="/src/styles/components/dropdown.css" />
 </head>
 
 <body>
@@ -33,6 +35,31 @@
 
             <nav class="menu">
               <a href="#support" class="menu__item menu__item--active">Поддержка сайтов</a>
+              
+              <!-- Кнопка Администрирование с выпадающим меню -->
+              <div class="dropdown">
+                <button class="dropdown__button">
+                  Администрирование <span class="dropdown__arrow">▾</span>
+                </button>
+                <div class="dropdown__content">
+                  <a href="#" class="dropdown__item">
+                    <span class="dropdown__item-text">Миграция</span>
+                  </a>
+                  <a href="#" class="dropdown__item">
+                    <span class="dropdown__item-text">Бэкапы</span>
+                  </a>
+                  <a href="#" class="dropdown__item">
+                    <span class="dropdown__item-text">Аудит безопасности</span>
+                  </a>
+                  <a href="#" class="dropdown__item">
+                    <span class="dropdown__item-text">Оптимизация скорости</span>
+                  </a>
+                  <a href="#" class="dropdown__item">
+                    <span class="dropdown__item-text">Переезд на HTTPS</span>
+                  </a>
+                </div>
+              </div>
+              
               <a href="#tariffs" class="menu__item">Тарифы</a>
               <a href="#portfolio" class="menu__item">Наши работы</a>
               <a href="#reviews" class="menu__item">Отзывы</a>
@@ -634,14 +661,21 @@
 
   </div>
 
-  <script type="module" src="/src/main.js"></script>
+   <script type="module" src="/src/main.js"></script>
   <script>
-    // Простой скрипт для плавной прокрутки
+    // Простой скрипт для плавной прокрутки и выпадающего меню
     document.addEventListener('DOMContentLoaded', function() {
+      // Плавная прокрутка для якорных ссылок
       const links = document.querySelectorAll('a[href^="#"]');
       
       links.forEach(link => {
         link.addEventListener('click', function(e) {
+          // Не применяем плавную прокрутку для пустых ссылок (#)
+          if (this.getAttribute('href') === '#') {
+            e.preventDefault();
+            return;
+          }
+          
           e.preventDefault();
           
           const targetId = this.getAttribute('href');
@@ -650,9 +684,8 @@
           const targetElement = document.querySelector(targetId);
           if (!targetElement) return;
           
-          // Простая плавная прокрутка
           window.scrollTo({
-            top: targetElement.offsetTop - 80, // Отступ для фиксированного header
+            top: targetElement.offsetTop - 80,
             behavior: 'smooth'
           });
           
@@ -661,6 +694,15 @@
             item.classList.remove('menu__item--active');
           });
           this.classList.add('menu__item--active');
+        });
+      });
+      
+      // Отключаем переход по ссылкам в выпадающем меню
+      document.querySelectorAll('.dropdown__item').forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Просто добавляем/убираем активный класс для визуальной обратной связи
+          this.classList.toggle('active');
         });
       });
       
