@@ -4,13 +4,13 @@
   position: relative;
   background-color: #fefefe;
   padding: 80px 0 var(--spacing-3xl) 0;
-  margin-top: -50px; /* ОТРИЦАТЕЛЬНЫЙ margin-top чтобы прилегать к support */
+  margin-top: -50px; 
   overflow: hidden;
   z-index: 1;
 
   .container {
     position: relative;
-    z-index: 3; /* Повышаем z-index контента */
+    z-index: 3; 
   }
 
   &__header {
@@ -33,17 +33,17 @@
     }
   }
 
-  /* ОЧЕНЬ БОЛЬШАЯ SVG - ПОЧТИ НА ВЕСЬ ЭКРАН */
+  /* SVG */
   &__decor {
     position: absolute;
-    right: -25%; /* Выводим сильно за правый край */
-    top: -25%; /* Выводим сильно за верхний край */
-    width: 150%; /* Занимает 150% ширины блока */
+    right: -25%; 
+    top: -25%;
+    width: 150%;
     height: auto;
-    min-width: 1400px; /* Минимальная ширина 1400px */
+    min-width: 1400px;
     opacity: 0.25;
     pointer-events: none;
-    z-index: 1; /* Под контентом */
+    z-index: 1;
 
     /* Для очень больших экранов делаем еще больше */
     @media (min-width: 1920px) {

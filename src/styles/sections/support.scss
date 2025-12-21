@@ -1,7 +1,7 @@
 .support {
   position: relative;
   background: var(--color-white);
-  padding: var(--spacing-3xl) 0 0 0; /* ← УБИРАЕМ padding-bottom */
+  padding: var(--spacing-3xl) 0 0 0; 
 
   &__header,
   &__grid {
@@ -51,13 +51,13 @@
     background: var(--color-white);
     border-radius: 0;
     padding: 24px 20px;
-    height: 100%; // Используем 100% высоты grid-ячейки
+    height: 100%; 
     position: relative;
     box-shadow: var(--shadow-md);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    min-height: 260px; // Минимальная высота для всех карточек
+    min-height: 260px; 
 
     &:hover {
       transform: translateY(-4px);
@@ -77,23 +77,23 @@
       line-height: 1.4;
       color: var(--color-dark);
       margin-bottom: 12px;
-      flex: 0 0 auto; // Не растягиваем заголовок
+      flex: 0 0 auto; 
     }
 
     &__text {
       font-size: 0.875rem;
       line-height: 1.5;
       color: var(--color-gray-light);
-      flex: 1; // Растягиваем текст, чтобы заполнить пространство
-      margin-bottom: 40px; // Отступ для иконки
+      flex: 1; 
+      margin-bottom: 40px; 
     }
 
     &__decor {
     position: absolute;
-    right: 0;        // ← ВМЕСТО right: 20px
-    bottom: 0;      // ← ОСТАЁТСЯ bottom: 0 (убираем 20px)
-    width: 75px;    // ← УВЕЛИЧИВАЕМ РАЗМЕР (было 40px)
-    height: 75px;   // ← УВЕЛИЧИВАЕМ РАЗМЕР
+    right: 0;       
+    bottom: 0;
+    width: 75px; 
+    height: 75px;  
     opacity: 0.8;
     }
   }
@@ -110,25 +110,25 @@
   // Стили для декораций
 &__decor-drupal {
   position: absolute;
-  right: 0%;  // Частично выходит за правый край
+  right: 0%;  
   top: 50%;
-  transform: translateY(-50%) rotate(-2deg);  // Поворот против часовой стрелки
-  width: 75%;  // Занимает 3/4 ширины темной зоны
+  transform: translateY(-50%) rotate(-2deg);  
+  width: 75%; 
   height: auto;
-  max-width: 800px;  // Ограничиваем максимальный размер
+  max-width: 800px;  
   // opacity: 0.15;  
-  pointer-events: none;  // Чтобы не мешало кликам
+  pointer-events: none; 
   z-index: 1;  // Под контентом, но над фоном
   
   @media (max-width: 1024px) {
-    width: 60%;  // Меньше на планшетах
+    width: 60%;  
     right: -15%;
   }
   
   @media (max-width: 768px) {
-    width: 80%;  // Больше на мобильных, но скрываем частично
+    width: 80%;  
     right: -30%;
-    opacity: 0.1;  // Еще более прозрачный
+    opacity: 0.1;  
   }
 }
 
@@ -136,23 +136,23 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 35%;  // 1/5 от ширины темной зоны
+  width: 35%;  
   height: auto;
-  max-width: 600px;  // Ограничиваем максимальный размер
-  z-index: 1;  // Под контентом, но над фоном
+  max-width: 600px;
+  z-index: 1;  
   pointer-events: none;
   
   @media (max-width: 1024px) {
-    width: 25%;  // Чуть больше на планшетах
+    width: 25%;
   }
   
   @media (max-width: 768px) {
-    width: 30%;  // Еще больше на мобильных
-    opacity: 0.8;  // Чуть прозрачнее
+    width: 30%;
+    opacity: 0.8;
   }
   
   @media (max-width: 480px) {
-    width: 40%;  // На очень маленьких экранах
+    width: 40%;
     opacity: 0.6;
   }
 }
@@ -164,7 +164,7 @@
   gap: var(--spacing-2xl);
   align-items: center;
   position: relative;
-  z-index: 2;  // Контент над декорациями
+  z-index: 2;
 
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr;

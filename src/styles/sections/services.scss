@@ -51,7 +51,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-lg);
-  grid-auto-rows: 1fr; /* ← ДОБАВЛЯЕМ для одинаковой высоты */
+  grid-auto-rows: 1fr;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -67,28 +67,28 @@
 .service-card {
   background: var(--color-surface);
   border-radius: 0;
-  padding: 24px 20px; /* ← УМЕНЬШАЕМ PADDING */
+  padding: 24px 20px;
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 240px; /* ← ДОБАВЛЯЕМ МИНИМАЛЬНУЮ ВЫСОТУ */
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* ← ЛЕГКАЯ ТЕНЬ */
+  min-height: 240px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 
   &:hover {
-    transform: translateY(-2px); /* ← УМЕНЬШАЕМ ЭФФЕКТ */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ← ТЕНЬ ПРИ НАВЕДЕНИИ */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 }
 
 .service-card__icon {
-  margin-bottom: 12px; /* ← УМЕНЬШАЕМ ОТСТУП */
-  width: 72px; /* ← УВЕЛИЧИВАЕМ РАЗМЕР */
+  margin-bottom: 12px;
+  width: 72px;
   height: 72px;
   display: flex;
-  align-items: flex-start; /* ← ВЫРАВНИВАЕМ ПО ВЕРХНЕМУ КРАЮ */
-  justify-content: flex-start; /* ← ВЫРАВНИВАЕМ ПО ЛЕВОМУ КРАЮ */
-  margin-left: -4px; /* ← НЕМНОГО ВЫХОДИМ ЗА ГРАНИЦЫ */
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: -4px;
   
   img {
     width: 100%;
@@ -98,19 +98,17 @@
 }
 
 .service-card__title {
-  font-size: 0.875rem; /* ← УМЕНЬШАЕМ РАЗМЕР ШРИФТА */
-  font-weight: 400; /* ← УБИРАЕМ ЖИРНЫЙ */
+  font-size: 0.875rem;
+  font-weight: 400;
   line-height: 1.5;
-  color: var(--color-text-light); /* ← СЕРЫЙ ЦВЕТ */
+  color: var(--color-text-light);
   flex-grow: 1;
-  margin-bottom: 0; /* ← УБИРАЕМ ОТСТУП СНИЗУ */
+  margin-bottom: 0; 
 
   @media (min-width: 768px) {
-    font-size: 0.9375rem; /* ← НЕМНОГО БОЛЬШЕ НА ПЛАНШЕТАХ */
+    font-size: 0.9375rem;
   }
 }
-
-/* УДАЛЯЕМ БЛОК .service-card__description */
 
 /* Дополнительные адаптивные стили */
 @media (max-width: 767px) {
@@ -120,7 +118,7 @@
   
   .service-card {
     padding: 20px 16px;
-    min-height: 200px; /* ← МЕНЬШЕ НА МОБИЛЬНЫХ */
+    min-height: 200px;
   }
   
   .service-card__icon {
@@ -143,10 +141,10 @@
 /* Для квадратной формы на десктопе */
 @media (min-width: 1024px) {
   .service-card {
-    min-height: 200px; /* ← МЕНЬШЕ ВЫСОТА НА ДЕСКТОПЕ */
+    min-height: 200px; 
   }
   
   .services__grid {
-    gap: var(--spacing-lg); /* ← МЕНЬШЕ РАССТОЯНИЕ МЕЖДУ КАРТОЧКАМИ */
+    gap: var(--spacing-lg); 
   }
 }

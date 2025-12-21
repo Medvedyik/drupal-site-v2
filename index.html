@@ -34,19 +34,52 @@
         </a>
 
         <nav class="menu">
-          <a href="#" class="menu__item menu__item--active">Поддержка сайтов</a>
-          <a href="#" class="menu__item">Тарифы</a>
-          <a href="#" class="menu__item">Наши работы</a>
-          <a href="#" class="menu__item">Отзывы</a>
-          <a href="#" class="menu__item">Контакты</a>
+          <a href="#" class="menu__item menu__item--active">ПОДДЕРЖКА САЙТОВ</a>
+          
+          <!-- Новый пункт с выпадающим меню: АДМИНИСТРИРОВАНИЕ -->
+          <div class="menu__dropdown">
+            <a href="#" class="menu__item menu__item--with-dropdown">
+              АДМИНИСТРИРОВАНИЕ
+              <span class="menu__dropdown-arrow">▾</span>
+            </a>
+              <div class="dropdown-menu">
+                <a href="#services" class="dropdown-menu__item">МИГРАЦИЯ</a>
+                <a href="#support" class="dropdown-menu__item">БЭКАПЫ</a>
+                <a href="#plans" class="dropdown-menu__item">АУДИТ БЕЗОПАСНОСТИ</a>
+                <a href="#cases" class="dropdown-menu__item">ОПТИМИЗАЦИЯ СКОРОСТИ</a>
+                <a href="#team" class="dropdown-menu__item">ПЕРЕЕЗД НА HTTPS</a>
+              </div>
+          </div>
+
+          <a href="#" class="menu__item">ТАРИФЫ</a>
+          <a href="#" class="menu__item">НАШИ РАБОТЫ</a>
+          
+          <!-- Новый пункт с выпадающим меню: О НАС -->
+          <div class="menu__dropdown">
+            <a href="#" class="menu__item menu__item--with-dropdown">
+              О НАС
+              <span class="menu__dropdown-arrow">▾</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-menu__item">КОМАНДА</a>
+              <a href="#" class="dropdown-menu__item">DRUPALGIVE</a>
+              <a href="#" class="dropdown-menu__item">БЛОГ</a>
+              <a href="#" class="dropdown-menu__item">КУРСЫ DRUPAL</a>
+            </div>
+          </div>
+
+          <a href="#" class="menu__item">ОТЗЫВЫ</a>
+          <a href="#" class="menu__item">КОНТАКТЫ</a>
         </nav>
       </div>
 
       <div class="header__nav-right">
-        <a href="tel:88002222673" class="header__phone">8 800 222-26-73</a>
-        <button class="lang">
-          RU <span class="lang__arrow">▾</span>
-        </button>
+        <div class="header__nav-right-content">
+          <a href="tel:88002222673" class="header__phone">8 800 222-26-73</a>
+          <button class="lang">
+            RU <span class="lang__arrow">▾</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -121,7 +154,7 @@
   </div>
 </header>
 
-<section class="services section">
+<section class="services section" id="services">
   <div class="container">
     <div class="services__header section-header">
       <h2 class="section-header__title">
@@ -217,7 +250,7 @@
 </section>
 
 
-<section class="support section">
+<section class="support section" id="support">
   <div class="container">
     <!-- Добавляем заголовок -->
     <div class="support__header">
@@ -341,7 +374,7 @@
 </div>
 </section>
 
-<section class="plans section">
+<section class="plans section" id="plans">
   <div class="container">
     <!-- Заголовок секции -->
     <div class="plans__header">
@@ -430,7 +463,7 @@
   <img src="/images/plans/drupal-graphic.svg" alt="" class="plans__decor" />
 </section>
 
-<section class="cases section">
+<section class="cases section" id="cases">
   <div class="container">
     <!-- Заголовок секции -->
     <div class="cases__header">
@@ -439,7 +472,7 @@
 
     <!-- Сетка карточек -->
     <div class="cases__grid">
-      <!-- Карточка 1: image1.png (текст под изображением, малая, 1/3) -->
+      <!-- Карточка 1 -->
       <article class="case-card case-card--below">
         <div class="case-card__image">
           <img src="/images/cases/image1.png" alt="Настройка выгрузки YML для Яндекс.Маркета">
@@ -453,7 +486,7 @@
         </div>
       </article>
 
-      <!-- Карточка 2: image2.png (текст поверх, средняя, 2/3) -->
+      <!-- Карточка 2 -->
       <article class="case-card case-card--overlay">
         <div class="case-card__image">
           <img src="/images/cases/image2.png" alt="Настройка выгрузки YML для Яндекс.Маркета">
@@ -463,7 +496,7 @@
         </div>
       </article>
 
-      <!-- Карточка 3: image3.png (текст поверх, малая, 1/3) -->
+      <!-- Карточка 3 -->
       <article class="case-card case-card--overlay">
         <div class="case-card__image">
           <img src="/images/cases/image3.png" alt="Настройка выгрузки YML для Яндекс.Маркета">
@@ -474,7 +507,7 @@
         </div>
       </article>
 
-      <!-- Карточка 4: image4.png (текст поверх, малая, 1/3) -->
+      <!-- Карточка 4 -->
       <article class="case-card case-card--overlay">
         <div class="case-card__image">
           <img src="/images/cases/image4.png" alt="Настройка выгрузки YML для Яндекс.Маркета">
@@ -485,7 +518,7 @@
         </div>
       </article>
 
-      <!-- Карточка 5: image5.png (текст под изображением, малая, 1/3) -->
+      <!-- Карточка 5 -->
       <article class="case-card case-card--below">
         <div class="case-card__image">
           <img src="/images/cases/image5.png" alt="Настройка выгрузки YML для Яндекс.Маркета">
@@ -499,7 +532,7 @@
         </div>
       </article>
 
-      <!-- Карточка 6: image6.png (текст поверх, средняя, 2/3) -->
+      <!-- Карточка 6 -->
       <article class="case-card case-card--overlay">
         <div class="case-card__image">
           <img src="/images/cases/image6.png" alt="Настройка выгрузки YML для Яндекс.Маркета">
@@ -510,7 +543,7 @@
         </div>
       </article>
 
-      <!-- Карточка 7: image7.png (текст поверх, малая, 1/3) -->
+      <!-- Карточка 7 -->
       <article class="case-card case-card--overlay">
         <div class="case-card__image">
           <img src="/images/cases/image7.png" alt="Настройка выгрузки YML для Яндекс.Маркета">
@@ -529,7 +562,7 @@
   </div>
 </section>
 
-<section class="team section">
+<section class="team section" id="team">
   <div class="container">
     <!-- Заголовок секции -->
     <div class="team__header">
@@ -541,18 +574,7 @@
       <!-- Карточка 1 -->
       <div class="team__member">
         <div class="team__photo">
-          <img src="/images/team/team1.png" alt="Лёша" loading="lazy">
-        </div>
-        <div class="team__info">
-          <h3 class="team__name">Илья Жирнов</h3>
-          <p class="team__role">Генеральный директор</p>
-        </div>
-      </div>
-
-      <!-- Карточка 2 -->
-      <div class="team__member">
-        <div class="team__photo">
-          <img src="/images/team/team2.jpg" alt="Роман" loading="lazy">
+          <img src="/images/team/team1.jpg" alt="" loading="lazy">
         </div>
         <div class="team__info">
           <h3 class="team__name">Сергей Синица</h3>
@@ -560,10 +582,10 @@
         </div>
       </div>
 
-      <!-- Карточка 3 -->
+      <!-- Карточка 2 -->
       <div class="team__member">
         <div class="team__photo">
-          <img src="/images/team/team3.jpg" alt="Ирина" loading="lazy">
+          <img src="/images/team/team2.jpg" alt="" loading="lazy">
         </div>
         <div class="team__info">
           <h3 class="team__name">Роман Агабеков</h3>
@@ -571,10 +593,10 @@
         </div>
       </div>
 
-      <!-- Карточка 4 -->
+      <!-- Карточка 3 -->
       <div class="team__member">
         <div class="team__photo">
-          <img src="/images/team/team4.jpg" alt="Даша" loading="lazy">
+          <img src="/images/team/team3.jpg" alt="" loading="lazy">
         </div>
         <div class="team__info">
           <h3 class="team__name">Алексей Синица</h3>
@@ -582,10 +604,10 @@
         </div>
       </div>
 
-      <!-- Карточка 5 -->
+      <!-- Карточка 4 -->
       <div class="team__member">
         <div class="team__photo">
-          <img src="/images/team/team5.jpg" alt="Сергей" loading="lazy">
+          <img src="/images/team/team4.jpg" alt="" loading="lazy">
         </div>
         <div class="team__info">
           <h3 class="team__name">Дарья Бочкарёва</h3>
@@ -593,16 +615,27 @@
         </div>
       </div>
 
-      <!-- Карточка 6 -->
+      <!-- Карточка 5 -->
       <div class="team__member">
         <div class="team__photo">
-          <img src="/images/team/team6.jpg" alt="Вадим" loading="lazy">
+          <img src="/images/team/team5.jpg" alt="" loading="lazy">
         </div>
         <div class="team__info">
           <h3 class="team__name">Ирина Торкунова</h3>
           <p class="team__role">Менеджер по работе с клиентами</p>
         </div>
       </div>
+
+      <!-- Карточка 6 -->
+      <!-- <div class="team__member">
+        <div class="team__photo">
+          <img src="/images/team/team6.png" alt="" loading="lazy">
+        </div>
+        <div class="team__info">
+          <h3 class="team__name">Вадим</h3>
+          <p class="team__role">Планирование задач</p>
+        </div>
+      </div> -->
     </div>
   </div>
 </section>

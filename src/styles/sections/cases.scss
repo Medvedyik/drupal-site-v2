@@ -34,7 +34,7 @@
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 475px; /* фиксированная высота для всех карточек */
+    grid-auto-rows: 475px;
     gap: 24px;
     margin-bottom: 40px;
 
@@ -90,18 +90,18 @@
       display: inline-block;
       padding: 14px 40px;
       background-color: transparent;
-      color: #0b1220; /* темно-синий */
+      color: #0b1220; 
       text-decoration: none;
       font-weight: 400;
       text-transform: uppercase;
-      border: 1px solid #d1d5db; /* тонкая серая обводка */
+      border: 1px solid #d1d5db;
       border-radius: 4px;
       letter-spacing: 1px;
       transition: all 0.3s ease;
       font-size: 0.875rem;
 
       &:hover {
-        border-color: #9ca3af; /* чуть темнее при наведении */
+        border-color: #9ca3af;
         background-color: rgba(0, 0, 0, 0.02);
         transform: translateY(-1px);
       }
@@ -157,7 +157,7 @@
     flex-direction: column;
 
     .case-card__image {
-      flex: 0 0 70%; /* изображение занимает 70% высоты */
+      flex: 0 0 70%; 
     }
 
     .case-card__content {
@@ -180,7 +180,7 @@
 
     .case-card__excerpt {
       color: var(--color-text-light);
-      margin-top: auto; /* прижимаем описание к низу */
+      margin-top: auto; 
     }
   }
 
@@ -210,7 +210,7 @@
 
     /* Для карточек с текстом под изображением */
     .case-card--below & {
-      height: 70%; /* переопределяем для этого типа карточек */
+      height: 70%; 
     }
   }
 
@@ -261,12 +261,12 @@
 @media (max-width: 768px) {
   .case-card {
     &:hover {
-      transform: none; /* Отключаем увеличение на мобильных */
+      transform: none; 
     }
 
     &--below {
       .case-card__image {
-        flex: 0 0 60%; /* меньше изображение на мобильных */
+        flex: 0 0 60%; 
       }
 
       .case-card__content {
