@@ -1,0 +1,254 @@
+@use '../base/variables' as *;
+
+.partners {
+  position: relative;
+  background-color: white;
+  padding: var(--spacing-3xl) 0;
+  overflow: hidden; /* Скрываем части карточек, выходящие за пределы */
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    position: relative;
+    z-index: 2; /* Текст над карточками */
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 60px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 16px 0;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+
+  /* Обертка для карточек (на всю ширину экрана) */
+  &__cards-wrapper {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 60px 0;
+    overflow: visible; /* Позволяем карточкам выходить за пределы */
+
+    @media (max-width: 768px) {
+      padding: 40px 0;
+    }
+  }
+
+  /* Отдельный ряд карточек */
+  &__row {
+    display: flex;
+    justify-content: center;
+    gap: 0; /* Убираем gap, используем negative margins */
+    margin-bottom: 30px;
+    width: calc(100% + 300px); /* Добавляем padding для компенсации смещения */
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Первый ряд - без смещения */
+    &--first {
+      transform: translateX(0);
+    }
+
+    /* Второй ряд - смещение на половину карточки вправо */
+    &--second {
+      transform: translateX(150px); /* Половина ширины карточки (300px/2) */
+
+      @media (max-width: 1024px) {
+        transform: translateX(125px); /* 250px/2 */
+      }
+
+      @media (max-width: 768px) {
+        transform: translateX(100px); /* 200px/2 */
+      }
+
+      @media (max-width: 480px) {
+        transform: translateX(75px); /* 150px/2 */
+      }
+    }
+
+    /* Гарантируем, что карточки не отлипнут от краев на любых экранах */
+    &::before {
+      content: '';
+      flex: 0 0 150px; /* Компенсируем отрицательный margin первой карточки */
+      visibility: hidden; /* Скрываем, но оставляем место */
+      
+      @media (max-width: 1024px) {
+        flex: 0 0 125px;
+      }
+      
+      @media (max-width: 768px) {
+        flex: 0 0 100px;
+      }
+      
+      @media (max-width: 480px) {
+        flex: 0 0 75px;
+      }
+    }
+
+    &::after {
+      content: '';
+      flex: 0 0 150px; /* Компенсируем отрицательный margin последней карточки */
+      visibility: hidden;
+      
+      @media (max-width: 1024px) {
+        flex: 0 0 125px;
+      }
+      
+      @media (max-width: 768px) {
+        flex: 0 0 100px;
+      }
+      
+      @media (max-width: 480px) {
+        flex: 0 0 75px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  /* Карточка партнера */
+  &__card {
+    flex: 0 0 auto;
+    width: 300px; /* Увеличили в 1.5 раза (было 200px) */
+    height: 180px; /* Увеличили пропорционально (120px * 1.5) */
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+    margin: 0 10px; /* Добавляем отступы между карточками */
+
+    /* Создаем эффект "ухода" за края экрана для крайних карточек */
+    &:first-child {
+      margin-left: -150px; /* Отрицательный margin = половина ширины карточки */
+    }
+
+    &:last-child {
+      margin-right: -150px; /* Отрицательный margin = половина ширины карточки */
+    }
+
+    img {
+      max-width: 80%; /* Занимает 80% ширины карточки */
+      max-height: 70%; /* Занимает 70% высоты карточки */
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      position: absolute; /* Для точного центрирования */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Идеальное центрирование */
+    }
+
+    @media (max-width: 1024px) {
+      width: 250px;
+      height: 150px;
+      padding: 20px;
+      margin: 0 8px;
+      
+      &:first-child {
+        margin-left: -125px;
+      }
+      
+      &:last-child {
+        margin-right: -125px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      width: 200px;
+      height: 120px;
+      padding: 15px;
+      margin: 0 6px;
+      
+      &:first-child {
+        margin-left: -100px;
+      }
+      
+      &:last-child {
+        margin-right: -100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      width: 150px;
+      height: 90px;
+      padding: 10px;
+      margin: 0 4px;
+      
+      &:first-child {
+        margin-left: -75px;
+      }
+      
+      &:last-child {
+        margin-right: -75px;
+      }
+    }
+  }
+}
+
+/* Чтобы избежать горизонтального скролла при выходящих за пределы элементах */
+body {
+  overflow-x: hidden;
+}
+
+/* Гарантируем, что на очень широких экранах карточки будут масштабироваться */
+@media (min-width: 1600px) {
+  .partners__card {
+    width: 350px;
+    height: 210px;
+    
+    &:first-child {
+      margin-left: -175px;
+    }
+    
+    &:last-child {
+      margin-right: -175px;
+    }
+    
+    img {
+      max-width: 75%;
+      max-height: 65%;
+    }
+  }
+  
+  .partners__row--second {
+    transform: translateX(175px);
+  }
+}
