@@ -17,135 +17,164 @@
   <div class="page">
 
 <header class="header">
-  <!-- видеофон -->
-  <video class="header__video" autoplay muted loop playsinline>
-    <source src="/video/video.mp4" type="video/mp4" />
-
+  <!-- Фоновое видео -->
+  <video class="header__video" autoplay muted loop playsinline preload="metadata">
+    <source src="/video/video.mp4" type="video/mp4">
   </video>
 
-  <div class="header__overlay"></div>
+  <!-- Темный оверлей поверх видео -->
+  <div class="header__overlay" aria-hidden="true"></div>
 
   <div class="container">
-    <!-- NAV -->
-    <div class="header__nav">
-      <div class="header__nav-left">
-        <a href="/" class="logo">
-          <img src="/images/header/drupal-coder.svg" alt="Drupal-coder" class="logo__image">
-        </a>
+    <!-- Навигация -->
+    <nav class="header__nav" aria-label="Главная навигация">
+      <!-- Логотип -->
+      <a href="/" class="header__logo">
+        <img src="/images/header/drupal-coder.svg" alt="Drupal-coder" class="header__logo-image">
+      </a>
 
-        <nav class="menu">
-          <a href="#" class="menu__item menu__item--active">ПОДДЕРЖКА САЙТОВ</a>
-          
-          <!-- Новый пункт с выпадающим меню: АДМИНИСТРИРОВАНИЕ -->
-          <div class="menu__dropdown">
-            <a href="#" class="menu__item menu__item--with-dropdown">
-              АДМИНИСТРИРОВАНИЕ
-              <span class="menu__dropdown-arrow">▾</span>
-            </a>
-              <div class="dropdown-menu">
-                <a href="#services" class="dropdown-menu__item">МИГРАЦИЯ</a>
-                <a href="#support" class="dropdown-menu__item">БЭКАПЫ</a>
-                <a href="#plans" class="dropdown-menu__item">АУДИТ БЕЗОПАСНОСТИ</a>
-                <a href="#cases" class="dropdown-menu__item">ОПТИМИЗАЦИЯ СКОРОСТИ</a>
-                <a href="#team" class="dropdown-menu__item">ПЕРЕЕЗД НА HTTPS</a>
-              </div>
-          </div>
+      <!-- Десктопное меню -->
+      <ul class="header__menu">
+        <li class="header__menu-item">
+          <a href="#" class="header__menu-link header__menu-link--active">ПОДДЕРЖКА САЙТОВ</a>
+        </li>
+        
+        <li class="header__menu-item header__menu-item--dropdown">
+          <a href="#" class="header__menu-link">
+            АДМИНИСТРИРОВАНИЕ
+            <span class="header__menu-arrow" aria-hidden="true">▾</span>
+          </a>
+          <ul class="header__dropdown" aria-label="Подменю администрирования">
+            <li><a href="#services" class="header__dropdown-link">МИГРАЦИЯ</a></li>
+            <li><a href="#support" class="header__dropdown-link">БЭКАПЫ</a></li>
+            <li><a href="#plans" class="header__dropdown-link">АУДИТ БЕЗОПАСНОСТИ</a></li>
+            <li><a href="#cases" class="header__dropdown-link">ОПТИМИЗАЦИЯ СКОРОСТИ</a></li>
+            <li><a href="#team" class="header__dropdown-link">ПЕРЕЕЗД НА HTTPS</a></li>
+          </ul>
+        </li>
 
-          <a href="#" class="menu__item">ТАРИФЫ</a>
-          <a href="#" class="menu__item">НАШИ РАБОТЫ</a>
-          
-          <!-- Новый пункт с выпадающим меню: О НАС -->
-          <div class="menu__dropdown">
-            <a href="#" class="menu__item menu__item--with-dropdown">
-              О НАС
-              <span class="menu__dropdown-arrow">▾</span>
-            </a>
-            <div class="dropdown-menu">
-              <a href="#" class="dropdown-menu__item">КОМАНДА</a>
-              <a href="#" class="dropdown-menu__item">DRUPALGIVE</a>
-              <a href="#" class="dropdown-menu__item">БЛОГ</a>
-              <a href="#" class="dropdown-menu__item">КУРСЫ DRUPAL</a>
-            </div>
-          </div>
+        <li class="header__menu-item">
+          <a href="#" class="header__menu-link">ТАРИФЫ</a>
+        </li>
+        
+        <li class="header__menu-item">
+          <a href="#" class="header__menu-link">НАШИ РАБОТЫ</a>
+        </li>
+        
+        <li class="header__menu-item header__menu-item--dropdown">
+          <a href="#" class="header__menu-link">
+            О НАС
+            <span class="header__menu-arrow" aria-hidden="true">▾</span>
+          </a>
+          <ul class="header__dropdown" aria-label="Подменю о нас">
+            <li><a href="#" class="header__dropdown-link">КОМАНДА</a></li>
+            <li><a href="#" class="header__dropdown-link">DRUPALGIVE</a></li>
+            <li><a href="#" class="header__dropdown-link">БЛОГ</a></li>
+            <li><a href="#" class="header__dropdown-link">КУРСЫ DRUPAL</a></li>
+          </ul>
+        </li>
 
-          <a href="#" class="menu__item">ОТЗЫВЫ</a>
-          <a href="#" class="menu__item">КОНТАКТЫ</a>
-        </nav>
+        <li class="header__menu-item">
+          <a href="#" class="header__menu-link">ОТЗЫВЫ</a>
+        </li>
+        
+        <li class="header__menu-item">
+          <a href="#" class="header__menu-link">КОНТАКТЫ</a>
+        </li>
+
+        <!-- Добавить этот блок ПЕРЕД закрывающим </ul> -->
+<li class="header__mobile-contacts">
+  <a href="tel:88002222673" class="header__phone">8 800 222-26-73</a>
+  <button class="header__lang" aria-label="Выбор языка">
+    RU <span class="header__lang-arrow" aria-hidden="true">▾</span>
+  </button>
+</li>
+      </ul>
+
+      <!-- Контакты и языковой переключатель -->
+      <div class="header__contacts">
+        <a href="tel:88002222673" class="header__phone">8 800 222-26-73</a>
+        <button class="header__lang" aria-label="Выбор языка">
+          RU <span class="header__lang-arrow" aria-hidden="true">▾</span>
+        </button>
       </div>
 
-      <div class="header__nav-right">
-        <div class="header__nav-right-content">
-          <a href="tel:88002222673" class="header__phone">8 800 222-26-73</a>
-          <button class="lang">
-            RU <span class="lang__arrow">▾</span>
-          </button>
-        </div>
-      </div>
-    </div>
+      <!-- Мобильное меню (гамбургер) -->
+      <button class="header__burger" aria-label="Открыть меню" aria-expanded="false">
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+      </button>
+    </nav>
 
-    <!-- HERO -->
+    <!-- Hero секция -->
     <div class="header__hero">
+      <!-- Контент -->
       <div class="header__content">
         <h1 class="header__title">
-          Поддержка<br />
+          Поддержка<br>
           сайтов на Drupal
         </h1>
 
         <p class="header__text">
-          Сопровождение и поддержка сайтов<br />
+          Сопровождение и поддержка сайтов<br>
           на CMS Drupal любых версий и запущенности
         </p>
 
-        <a href="#" class="btn btn--outline">ТАРИФЫ</a>
+        <a href="#plans" class="header__button">ТАРИФЫ</a>
       </div>
 
+      <!-- Статистика -->
       <div class="header__stats">
-        <div class="stat">
-          <div class="stat__value">#1</div>
-          <div class="stat__text">
-            Drupal-разработчик<br />
-            в России по версии<br />
+        <div class="header__stat">
+          <div class="header__stat-value">
+            #1
+            <img src="/images/header/cup.png" alt="" class="header__stat-icon" aria-hidden="true">
+          </div>
+          <div class="header__stat-text">
+            Drupal-разработчик<br>
+            в России по версии<br>
             Рейтинга Рунета
           </div>
         </div>
 
-        <div class="stat">
-          <div class="stat__value">3+</div>
-          <div class="stat__text">
-            средний опыт<br />
-            специалистов более<br />
+        <div class="header__stat">
+          <div class="header__stat-value">3+</div>
+          <div class="header__stat-text">
+            средний опыт<br>
+            специалистов более<br>
             3 лет
           </div>
         </div>
 
-        <div class="stat">
-          <div class="stat__value">14</div>
-          <div class="stat__text">
-            лет опыта в сфере<br />
+        <div class="header__stat">
+          <div class="header__stat-value">14</div>
+          <div class="header__stat-text">
+            лет опета в сфере<br>
             Drupal
           </div>
         </div>
 
-        <div class="stat">
-          <div class="stat__value">200+</div>
-          <div class="stat__text">
-            модулей и тем<br />
+        <div class="header__stat">
+          <div class="header__stat-value">200+</div>
+          <div class="header__stat-text">
+            модулей и тем<br>
             в формате DrupalGive
           </div>
         </div>
 
-        <div class="stat">
-          <div class="stat__value">35 000</div>
-          <div class="stat__text">
-            часов поддержки<br />
+        <div class="header__stat">
+          <div class="header__stat-value">35 000</div>
+          <div class="header__stat-text">
+            часов поддержки<br>
             сайтов на Drupal
           </div>
         </div>
 
-        <div class="stat">
-          <div class="stat__value">200+</div>
-          <div class="stat__text">
-            проектов<br />
+        <div class="header__stat">
+          <div class="header__stat-value">200+</div>
+          <div class="header__stat-text">
+            проектов<br>
             на поддержке
           </div>
         </div>
@@ -1021,5 +1050,83 @@
 
   <script type="module" src="/src/main.js"></script>
   <script type="module" src="/src/js/reviews-slider.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Элементы меню
+  const header = document.querySelector('.header');
+  const burger = document.querySelector('.header__burger');
+  const nav = document.querySelector('.header__nav');
+  const menu = document.querySelector('.header__menu');
+  const dropdowns = document.querySelectorAll('.header__menu-item--dropdown');
+  
+  // Открытие/закрытие мобильного меню
+  if (burger && nav) {
+    burger.addEventListener('click', function() {
+      nav.classList.toggle('header__nav--mobile-open');
+      const isOpen = nav.classList.contains('header__nav--mobile-open');
+      burger.setAttribute('aria-expanded', isOpen);
+      
+      // Блокируем скролл страницы при открытом меню
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+  }
+  
+  // Открытие выпадающих меню на мобильных
+  if (dropdowns.length > 0) {
+    dropdowns.forEach(dropdown => {
+      const link = dropdown.querySelector('.header__menu-link');
+      const dropdownMenu = dropdown.querySelector('.header__dropdown');
+      
+      if (link && dropdownMenu) {
+        link.addEventListener('click', function(e) {
+          // Только на мобильных
+          if (window.innerWidth < 1024) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Закрываем все остальные выпадающие меню
+            document.querySelectorAll('.header__dropdown').forEach(item => {
+              if (item !== dropdownMenu) {
+                item.classList.remove('header__dropdown--open');
+              }
+            });
+            
+            // Открываем текущее
+            dropdownMenu.classList.toggle('header__dropdown--open');
+          }
+        });
+      }
+    });
+  }
+  
+  // Закрытие меню при клике вне его области (только для мобильных)
+  document.addEventListener('click', function(event) {
+    if (window.innerWidth < 1024 && nav.classList.contains('header__nav--mobile-open')) {
+      const isClickInsideMenu = menu?.contains(event.target);
+      const isClickOnBurger = burger?.contains(event.target);
+      
+      if (!isClickInsideMenu && !isClickOnBurger) {
+        nav.classList.remove('header__nav--mobile-open');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    }
+  });
+  
+  // Закрытие меню при ресайзе окна на десктоп
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= 1024) {
+      nav.classList.remove('header__nav--mobile-open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      
+      // Закрываем все выпадающие меню
+      document.querySelectorAll('.header__dropdown').forEach(item => {
+        item.classList.remove('header__dropdown--open');
+      });
+    }
+  });
+});
+</script>
 </body>
 </html>

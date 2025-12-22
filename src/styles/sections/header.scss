@@ -1,205 +1,88 @@
+@use '../base/variables' as *;
+
+/* ==========================================================================
+   HEADER - MOBILE FIRST
+   ========================================================================== */
+
+/**
+ * Базовые стили хедера
+ */
 .header {
   position: relative;
-  color: #fff;
-  overflow: hidden;
   min-height: 100vh;
+  color: white;
+  background-color: #050814; /* Фолбэк фон */
+  overflow: hidden;
+  
+  /* Контейнер для центрирования */
+  .container {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+  }
 }
 
+/* Фоновое видео */
 .header__video {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -2;
+  z-index: 0;
 }
 
+/* Темный оверлей поверх видео */
 .header__overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(5, 8, 20, 0.75);
-  z-index: -1;
+  z-index: 1;
 }
 
-/* NAV */
+/**
+ * Навигация - мобильная версия
+ */
 .header__nav {
-  height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px 0 20px; /* Увеличиваем правый отступ */
+  padding: 20px 16px;
+  position: relative;
+  z-index: 2;
+  min-height: 76px;
 }
 
-.header__nav-left {
-  display: flex;
-  align-items: center;
-  gap: 56px;
-}
-
-/* ЛОГОТИП - возвращаем исходный стиль */
-.logo {
+/* Логотип */
+.header__logo {
   display: flex;
   align-items: center;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
-.logo__image {
-  height: 25px; /* Возвращаем нормальный размер */
+.header__logo-image {
+  height: 28px;
   width: auto;
-  
-  @media (max-width: 768px) {
-    height: 32px;
-  }
 }
 
-.menu {
-  display: flex;
-  gap: 32px;
-  align-items: center; /* Выравниваем все кнопки */
-}
-
-/* Базовые стили для пунктов меню */
-.menu__item {
-  position: relative;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  text-transform: uppercase;
-  padding: 8px 0;
-  transition: color 0.2s ease;
-  white-space: nowrap;
-  
-  /* Линия при hover для всех пунктов меню */
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 0;
-    height: 2px;
-    background: #ff3b30;
-    transition: width 0.2s ease;
-  }
-  
-  /* Hover эффект для всех пунктов */
-  &:hover {
-    color: #fff;
-    
-    &::after {
-      width: 100%;
-    }
-  }
-}
-
-/* Убираем статичную полосу под активной кнопкой */
-.menu__item--active {
-  color: #fff;
-  
-  &::after {
-    width: 0; /* Убираем статичную полосу */
-  }
-  
-  &:hover::after {
-    width: 100%; /* Появляется только при hover */
-  }
-}
-
-/* Стрелка для выпадающих пунктов меню */
-.menu__dropdown-arrow {
-  display: inline-block;
-  margin-left: 4px;
-  font-size: 10px;
-  opacity: 0.8;
-  transform: translateY(-1px);
-}
-
-/* Контейнер для выпадающего меню */
-.menu__dropdown {
-  position: relative;
-  
-  &:hover {
-    .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    
-    .menu__item {
-      color: #fff;
-      
-      &::after {
-        width: 100%;
-      }
-    }
-  }
-}
-
-/* Выпадающее меню - сжимаем */
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 200px;
-  background: #ff3b30;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-5px);
-  transition: all 0.2s ease;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 4px 0; /* Уменьшаем отступы */
-  
-  /* Треугольник/стрелка сверху */
-  &::before {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: 20px;
-    width: 8px;
-    height: 8px;
-    background: #ff3b30;
-    transform: rotate(45deg);
-  }
-}
-
-/* Элементы выпадающего меню - сжимаем */
-.dropdown-menu__item {
-  display: block;
-  padding: 8px 16px; /* Уменьшаем padding */
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 12px; /* Уменьшаем шрифт */
-  font-weight: 400; /* Делаем тоньше */
-  transition: background-color 0.2s ease;
-  white-space: nowrap;
-  
-  &:hover {
-    background-color: #e64500;
-  }
-  
-  /* Разделитель между элементами */
-  &:not(:last-child) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* ПРАВАЯ ЧАСТЬ - прижимаем к правому краю */
-.header__nav-right {
-  display: flex;
-  align-items: center;
-  gap: 40px; /* Увеличиваем отступ между номером и кнопкой RU */
-  margin-left: auto;
+/* Контакты для мобильных */
+.header__contacts {
+  display: none; /* На мобильных скрываем, показываем только бургер */
 }
 
 .header__phone {
-  color: #fff;
-  font-size: 15px;
+  color: white;
   text-decoration: none;
+  font-size: 14px;
   white-space: nowrap;
 }
 
-.lang {
+.header__lang {
   background: none;
   border: none;
   color: rgba(255, 255, 255, 0.7);
@@ -208,167 +91,460 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  padding: 0;
 }
 
-.lang__arrow {
+.header__lang-arrow {
   font-size: 12px;
   opacity: 0.8;
 }
 
-/* HERO */
-.header__hero {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 40px;
-  align-items: center;
-  min-height: calc(100vh - 76px);
+/* Мобильное меню (гамбургер) */
+.header__burger {
+  display: block;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 3;
 }
 
-.header__content {
-  max-width: 520px;
-}
-
-.header__title {
-  font-size: 54px;
-  line-height: 1.12;
-  margin: 0;
-}
-
-.header__text {
-  margin-top: 24px;
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 36px;
-  padding: 14px 32px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.btn--outline {
-  border: 2px solid #ff3b30;
-  color: #fff;
+.header__burger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  margin: 5px 0;
   transition: 0.3s;
 }
 
-.btn--outline:hover {
-  background: #ff3b30;
+/* Десктопное меню - скрыто на мобильных */
+.header__menu {
+  display: none;
 }
 
-/* STATS */
-.header__stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 36px;
+/**
+ * Hero секция - мобильная версия
+ */
+.header__hero {
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
-.stat {
-  position: relative;
-  padding-left: 16px;
+/* Контент hero */
+.header__content {
+  text-align: center;
 }
 
-.stat::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 3px;
-  height: 100%;
-  background: #ff3b30;
-}
-
-.stat__value {
-  font-size: 34px;
+.header__title {
+  font-size: 32px;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
   font-weight: 700;
 }
 
-.stat__text {
-  margin-top: 8px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.75);
+.header__text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 30px 0;
 }
 
-/* ADAPTIVE */
-@media (max-width: 1024px) {
+.header__button {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 2px solid #ff3b30;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: 0.3s;
+  font-size: 14px;
+  
+  &:hover {
+    background: #ff3b30;
+  }
+}
+
+/* Статистика - мобильная версия */
+.header__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr; /* ← ГЛАВНОЕ: все строки одинаковой высоты */
+  gap: 24px;
+  align-items: stretch; /* ← Растягиваем элементы по высоте */
+}
+
+.header__stat {
+  position: relative;
+  padding-left: 12px;
+  display: flex; /* ← Используем flex для контроля высоты */
+  flex-direction: column;
+  min-height: 100px; /* ← Минимальная высота для всех */
+}
+
+.header__stat::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 10px;
+  bottom: 17px; /* ← Линия от верха до низа блока */
+  width: 2px;
+  background: #ff3b30;
+}
+
+.header__stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header__stat-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.header__stat-text {
+  font-size: 12px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+  flex: 1; /* ← Текст занимает оставшееся пространство */
+}
+
+/* ==========================================================================
+   ПЛАНШЕТНАЯ ВЕРСИЯ (768px и выше)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .header__nav {
+    padding: 20px 24px;
+  }
+  
   .header__hero {
-    grid-template-columns: 1fr;
-    gap: 56px;
+    padding: 60px 24px;
+    gap: 60px;
+  }
+  
+  .header__title {
+    font-size: 42px;
+  }
+  
+  .header__stats {
+    gap: 32px;
   }
 
-  .header__stats {
-    grid-template-columns: 1fr 1fr;
+  .header__stat {
+    min-height: 120px;
   }
   
-  .menu {
-    gap: 24px;
+  .header__stat-value {
+    font-size: 28px;
   }
   
-  .header__nav-left {
-    gap: 40px;
+  .header__stat-text {
+    font-size: 13px;
   }
   
-  .header__nav-right {
-    gap: 30px;
+  .header__stat-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* ==========================================================================
+   ДЕСКТОПНАЯ ВЕРСИЯ (1024px и выше)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .header__nav {
+    padding: 20px 10px;
   }
   
-  /* Упрощаем меню на планшетах */
-  .menu__dropdown {
-    .dropdown-menu {
-      position: fixed;
-      top: 76px;
+  /* Показываем контакты, скрываем бургер */
+  .header__contacts {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  
+  .header__burger {
+    display: none;
+  }
+  
+  /* Десктопное меню */
+  .header__menu {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 35%;
+    transform: translateX(-30%);
+  }
+  
+  /* Пункты меню */
+  .header__menu-item {
+    position: relative;
+    
+    &--dropdown:hover .header__dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  /* Контакты для мобильных - скрываем на десктопе */
+  .header__mobile-contacts {
+    display: none;
+  }
+  
+  /* Ссылки меню - ВСЕ ОДИНАКОВЫЕ */
+  .header__menu-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+    transition: color 0.2s ease;
+    
+    /* Динамичная полоса при hover */
+    &::after {
+      content: '';
+      position: absolute;
       left: 0;
-      right: 0;
-      width: 100%;
-      max-width: 100%;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      bottom: -4px; /* Ближе к тексту */
+      width: 0;
+      height: 2px;
+      background: #ff3b30;
+      transition: width 0.2s ease;
+    }
+    
+    &:hover {
+      color: white;
       
-      &::before {
-        display: none;
+      &::after {
+        width: 100%;
       }
+    }
+    
+    // /* Активный пункт меню */
+    // &--active {
+    //   color: white;
+      
+    //   &::after {
+    //     width: 100%;
+    //   }
+    // }
+  }
+  
+  /* Стрелка для выпадающих пунктов */
+  .header__menu-arrow {
+    font-size: 10px;
+    opacity: 0.8;
+  }
+  
+  /* Выпадающее меню - ПРАВИЛЬНОЕ ПОЗИЦИОНИРОВАНИЕ */
+  .header__dropdown {
+    position: absolute;
+    top: calc(100% + 2px); /* Минимальный отступ, чтобы не было мертвой зоны */
+    left: 0;
+    min-width: 220px;
+    background: #ff3b30;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    
+    /* Треугольник сверху */
+    &::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 20px;
+      width: 12px;
+      height: 12px;
+      background: #ff3b30;
+      transform: rotate(45deg);
+    }
+  }
+  
+  /* Элементы выпадающего меню */
+  .header__dropdown-link {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 400;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: #e64500;
+    }
+  }
+  
+  /* Hero секция - десктопная версия */
+  .header__hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 80px;
+    padding: 60px 40px;
+    min-height: calc(100vh - 76px);
+  }
+  
+  .header__content {
+    text-align: left;
+  }
+  
+  .header__title {
+    font-size: 54px;
+    margin-bottom: 24px;
+  }
+  
+  .header__text {
+    font-size: 17px;
+    margin-bottom: 36px;
+  }
+  
+  /* Десктопная версия (1024px и выше) */
+  @media (min-width: 1024px) {
+    .header__stats {
+      gap: 36px;
+    }
+    
+    .header__stat {
+      min-height: 140px;
+    }
+    
+    .header__stat-value {
+      font-size: 34px;
+    }
+    
+    .header__stat-text {
+      font-size: 14px;
+    }
+    
+    .header__stat-icon {
+      width: 28px;
+      height: 28px;
     }
   }
 }
 
-@media (max-width: 768px) {
-  .menu {
-    display: none; /* На мобильных скрываем меню */
+/* ==========================================================================
+   МОБИЛЬНОЕ МЕНЮ (открытое состояние)
+   ========================================================================== */
+@media (max-width: 1023px) {
+  /* Открытое мобильное меню */
+  .header__nav.header__nav--mobile-open {
+    .header__menu {
+      display: block;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(5, 8, 20, 0.95);
+      padding: 40px 24px;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+    
+    .header__contacts {
+      display: none; /* В мобильном меню контакты показываем внутри меню */
+    }
+    
+    /* Анимация бургера в крестик */
+    .header__burger-line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .header__burger-line:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .header__burger-line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
   }
   
-  .header__nav {
-    padding: 0 20px;
+  /* Стили мобильного меню */
+  .header__menu {
+    text-align: center;
   }
   
-  .header__nav-right {
-    gap: 24px;
-  }
-}
-
-@media (max-width: 640px) {
-  .header__title {
-    font-size: 38px;
-  }
-
-  .header__stats {
-    grid-template-columns: 1fr;
+  .header__menu-item {
+    margin-bottom: 24px;
   }
   
-  .header__nav {
-    padding: 0 16px;
+  .header__menu-link {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    display: block;
+    padding: 12px 0;
   }
   
-  .header__nav-right {
-    gap: 20px;
+  /* Мобильные выпадающие меню */
+  .header__dropdown {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0 0;
+    background: rgba(255, 59, 48, 0.1);
+    border-radius: 4px;
+    display: none;
+    
+    &.header__dropdown--open {
+      display: block;
+    }
   }
   
-  .header__phone {
+  .header__dropdown-link {
+    display: block;
+    padding: 10px 20px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    text-transform: uppercase;
     font-size: 14px;
+    
+    &:hover {
+      background: rgba(255, 59, 48, 0.2);
+    }
   }
   
-  .lang {
-    font-size: 13px;
+  /* Контакты в мобильном меню */
+  .header__mobile-contacts {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    
+    .header__phone {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    
+    .header__lang {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 16px;
+    }
   }
 }
