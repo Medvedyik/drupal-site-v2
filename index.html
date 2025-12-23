@@ -85,14 +85,12 @@
         <li class="header__menu-item">
           <a href="#" class="header__menu-link">КОНТАКТЫ</a>
         </li>
-
-        <!-- Добавить этот блок ПЕРЕД закрывающим </ul> -->
-<li class="header__mobile-contacts">
-  <a href="tel:88002222673" class="header__phone">8 800 222-26-73</a>
-  <button class="header__lang" aria-label="Выбор языка">
-    RU <span class="header__lang-arrow" aria-hidden="true">▾</span>
-  </button>
-</li>
+        <li class="header__mobile-contacts">
+          <a href="tel:88002222673" class="header__phone">8 800 222-26-73</a>
+          <button class="header__lang" aria-label="Выбор языка">
+            RU <span class="header__lang-arrow" aria-hidden="true">▾</span>
+          </button>
+        </li>
       </ul>
 
       <!-- Контакты и языковой переключатель -->
@@ -103,7 +101,7 @@
         </button>
       </div>
 
-      <!-- Мобильное меню (гамбургер) -->
+      <!-- Мобильное меню -->
       <button class="header__burger" aria-label="Открыть меню" aria-expanded="false">
         <span class="header__burger-line"></span>
         <span class="header__burger-line"></span>
@@ -901,7 +899,6 @@
       <button class="review-card__mobile-arrow" data-direction="next">›</button>
     </div>
 
-    <!-- Индикаторы (точки) удалены по заданию -->
   </div>
 </section>
 
@@ -916,9 +913,9 @@
     </div>
   </div>
 
-  <!-- Карточки партнеров (выходят за пределы контейнера) -->
+  <!-- Карточки партнеров -->
   <div class="partners__cards-wrapper">
-    <!-- Первый ряд (без смещения) -->
+    <!-- Первый ряд -->
     <div class="partners__row partners__row--first">
       <div class="partners__card">
         <img src="/drupal-site-v2/images/partners/partners1.png" alt="Логотип партнера 1">
@@ -952,7 +949,7 @@
       </div>
     </div>
 
-    <!-- Второй ряд (смещен на половину карточки вправо) -->
+    <!-- Второй ряд -->
     <div class="partners__row partners__row--second">
       <div class="partners__card">
         <img src="/drupal-site-v2/images/partners/partners2.png" alt="Логотип партнера 2">
@@ -1109,83 +1106,83 @@
 
   </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Элементы меню
-  const header = document.querySelector('.header');
-  const burger = document.querySelector('.header__burger');
-  const nav = document.querySelector('.header__nav');
-  const menu = document.querySelector('.header__menu');
-  const dropdowns = document.querySelectorAll('.header__menu-item--dropdown');
-  
-  // Открытие/закрытие мобильного меню
-  if (burger && nav) {
-    burger.addEventListener('click', function() {
-      nav.classList.toggle('header__nav--mobile-open');
-      const isOpen = nav.classList.contains('header__nav--mobile-open');
-      burger.setAttribute('aria-expanded', isOpen);
-      
-      // Блокируем скролл страницы при открытом меню
-      document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-  }
-  
-  // Открытие выпадающих меню на мобильных
-  if (dropdowns.length > 0) {
-    dropdowns.forEach(dropdown => {
-      const link = dropdown.querySelector('.header__menu-link');
-      const dropdownMenu = dropdown.querySelector('.header__dropdown');
-      
-      if (link && dropdownMenu) {
-        link.addEventListener('click', function(e) {
-          // Только на мобильных
-          if (window.innerWidth < 1024) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Закрываем все остальные выпадающие меню
-            document.querySelectorAll('.header__dropdown').forEach(item => {
-              if (item !== dropdownMenu) {
-                item.classList.remove('header__dropdown--open');
-              }
-            });
-            
-            // Открываем текущее
-            dropdownMenu.classList.toggle('header__dropdown--open');
-          }
-        });
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Элементы меню
+    const header = document.querySelector('.header');
+    const burger = document.querySelector('.header__burger');
+    const nav = document.querySelector('.header__nav');
+    const menu = document.querySelector('.header__menu');
+    const dropdowns = document.querySelectorAll('.header__menu-item--dropdown');
+    
+    // Открытие/закрытие мобильного меню
+    if (burger && nav) {
+      burger.addEventListener('click', function() {
+        nav.classList.toggle('header__nav--mobile-open');
+        const isOpen = nav.classList.contains('header__nav--mobile-open');
+        burger.setAttribute('aria-expanded', isOpen);
+        
+        // Блокируем скролл страницы при открытом меню
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+    }
+    
+    // Открытие выпадающих меню на мобильных
+    if (dropdowns.length > 0) {
+      dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('.header__menu-link');
+        const dropdownMenu = dropdown.querySelector('.header__dropdown');
+        
+        if (link && dropdownMenu) {
+          link.addEventListener('click', function(e) {
+            // Только на мобильных
+            if (window.innerWidth < 1024) {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              // Закрываем все остальные выпадающие меню
+              document.querySelectorAll('.header__dropdown').forEach(item => {
+                if (item !== dropdownMenu) {
+                  item.classList.remove('header__dropdown--open');
+                }
+              });
+              
+              // Открываем текущее
+              dropdownMenu.classList.toggle('header__dropdown--open');
+            }
+          });
+        }
+      });
+    }
+    
+    // Закрытие меню при клике вне его области (только для мобильных)
+    document.addEventListener('click', function(event) {
+      if (window.innerWidth < 1024 && nav.classList.contains('header__nav--mobile-open')) {
+        const isClickInsideMenu = menu?.contains(event.target);
+        const isClickOnBurger = burger?.contains(event.target);
+        
+        if (!isClickInsideMenu && !isClickOnBurger) {
+          nav.classList.remove('header__nav--mobile-open');
+          burger.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
       }
     });
-  }
-  
-  // Закрытие меню при клике вне его области (только для мобильных)
-  document.addEventListener('click', function(event) {
-    if (window.innerWidth < 1024 && nav.classList.contains('header__nav--mobile-open')) {
-      const isClickInsideMenu = menu?.contains(event.target);
-      const isClickOnBurger = burger?.contains(event.target);
-      
-      if (!isClickInsideMenu && !isClickOnBurger) {
+    
+    // Закрытие меню при ресайзе окна на десктоп
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 1024) {
         nav.classList.remove('header__nav--mobile-open');
         burger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
+        
+        // Закрываем все выпадающие меню
+        document.querySelectorAll('.header__dropdown').forEach(item => {
+          item.classList.remove('header__dropdown--open');
+        });
       }
-    }
+    });
   });
-  
-  // Закрытие меню при ресайзе окна на десктоп
-  window.addEventListener('resize', function() {
-    if (window.innerWidth >= 1024) {
-      nav.classList.remove('header__nav--mobile-open');
-      burger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      
-      // Закрываем все выпадающие меню
-      document.querySelectorAll('.header__dropdown').forEach(item => {
-        item.classList.remove('header__dropdown--open');
-      });
-    }
-  });
-});
-</script>
+  </script>
 </body>
 </html>
