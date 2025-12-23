@@ -163,7 +163,7 @@
   flex-direction: column;
   height: 100%;
   position: relative;
-  z-index: 3; /* Карточки над SVG */
+  z-index: 3; 
 
   &:hover {
     transform: translateY(-16px) scale(1.06);

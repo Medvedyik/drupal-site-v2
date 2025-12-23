@@ -1,150 +1,178 @@
-/* ==========================================================================
-   SERVICES SECTION
-   ========================================================================== */
+// ==========================================================================
+// СЕКЦИЯ УСЛУГ (SERVICES)
+// ==========================================================================
 
 .services {
-  background: var(--color-background);
-  color: var(--color-text);
-}
+  padding: var(--spacing-2xl) 0;
 
-/* Заголовок секции */
-.section-header {
-  text-align: left;
-  margin-bottom: var(--spacing-2xl);
-
+  // Планшеты (768px+)
   @media (min-width: 768px) {
-    margin-bottom: var(--spacing-3xl);
+    padding: var(--spacing-3xl) 0;
   }
 }
 
-.section-header__title {
+// Заголовок секции
+.services__header { 
+  margin-bottom: var(--spacing-xl);
+  padding: 0 var(--spacing-sm);
+  max-width: 600px;
+
+  // Планшеты (768px+)
+  @media (min-width: 768px) {
+    margin-bottom: var(--spacing-2xl);
+    padding: 0;
+  }
+  // Десктоп (1024px+)
+  @media (min-width: 1024px) {
+    margin-left: 42px;
+  }
+}
+
+.services__title {
   font-size: 1.75rem;
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: var(--spacing-md);
+  margin: 0 0 var(--spacing-md);
   color: var(--color-text);
-  max-width: 800px;
+  max-width: 700px;
 
+  // Планшеты (768px+)
   @media (min-width: 768px) {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
 
+  // Десктоп (1024px+)
   @media (min-width: 1024px) {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 }
 
-.section-header__subtitle {
+.services__subtitle {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text-light);
+  margin: 0;
   max-width: 600px;
-  text-align: left;
 
+  // Планшеты (768px+)
   @media (min-width: 768px) {
     font-size: 1.125rem;
   }
 }
 
-/* Сетка карточек */
+// ==========================================================================
+// СЕТКА КАРТОЧЕК
+// ==========================================================================
+
 .services__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
-  grid-auto-rows: 1fr;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-sm);
 
+  // Планшеты (768px+)
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
+    padding: 0;
   }
 
+  // Десктоп (1024px+)
   @media (min-width: 1024px) {
     grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
   }
 }
 
-/* Карточка услуги */
+// ==========================================================================
+// КАРТОЧКА УСЛУГИ
+// ==========================================================================
+
 .service-card {
-  background: var(--color-surface);
-  border-radius: 0;
-  padding: 24px 20px;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 240px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: var(--spacing-md);
+  aspect-ratio: 1.4;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  // Планшеты (768px+)
+  @media (min-width: 768px) {
+    aspect-ratio: 1.2;
+    padding: var(--spacing-lg);
+  }
+  
+  // Десктоп (1024px+)
+  @media (min-width: 1024px) {
+    aspect-ratio: 1; // Квадрат
+    padding: var(--spacing-xl);
   }
 }
 
+// Иконка карточки
 .service-card__icon {
-  margin-bottom: 12px;
-  width: 72px;
-  height: 72px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  margin-left: -4px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-md);
   
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
-}
-
-.service-card__title {
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--color-text-light);
-  flex-grow: 1;
-  margin-bottom: 0; 
-
+  
+  // Планшеты (768px+)
   @media (min-width: 768px) {
-    font-size: 0.9375rem;
-  }
-}
-
-/* Дополнительные адаптивные стили */
-@media (max-width: 767px) {
-  .services__grid {
-    gap: var(--spacing-md);
+    width: 56px;
+    height: 56px;
   }
   
-  .service-card {
-    padding: 20px 16px;
-    min-height: 200px;
-  }
-  
-  .service-card__icon {
+  // Десктоп (1024px+)
+  @media (min-width: 1024px) {
     width: 64px;
     height: 64px;
   }
 }
 
-@media (max-width: 374px) {
-  .section-header__title {
-    font-size: 1.5rem;
+// Заголовок карточки
+.service-card__title {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--color-text-light);
+  margin: 0;
+  flex: 1;
+  
+  // Планшеты (768px+)
+  @media (min-width: 768px) {
+    font-size: 0.9375rem;
   }
   
-  .service-card {
-    padding: 16px;
-    min-height: 180px;
+  // Десктоп (1024px+)
+  @media (min-width: 1024px) {
+    font-size: 1rem;
   }
 }
 
-/* Для квадратной формы на десктопе */
-@media (min-width: 1024px) {
-  .service-card {
-    min-height: 200px; 
+// ==========================================================================
+// АДАПТИВ (до 374px)
+// ==========================================================================
+
+@media (max-width: 374px) {
+  .services__grid {
+    gap: var(--spacing-sm);
   }
   
-  .services__grid {
-    gap: var(--spacing-lg); 
+  .service-card {
+    padding: var(--spacing-sm);
+    aspect-ratio: 1.6;
+  }
+  
+  .service-card__icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .service-card__title {
+    font-size: 0.8125rem;
   }
 }

@@ -117,8 +117,6 @@ function initInfiniteReviewsSlider() {
   
   // Обновляем состояние кнопок при каждом изменении
   function updateButtonStates() {
-    // Для бесконечного слайдера кнопки никогда не отключаем
-    // Но можно добавить эффект при достижении крайних позиций
     const formatIndex = (index) => String(index + 1).padStart(2, '0');
     
     // Обновляем счетчики с анимацией

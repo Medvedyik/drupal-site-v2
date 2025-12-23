@@ -4,14 +4,14 @@
   position: relative;
   background-color: white;
   padding: var(--spacing-3xl) 0;
-  overflow: hidden; /* Скрываем части карточек, выходящие за пределы */
+  overflow: hidden; 
 
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 16px;
     position: relative;
-    z-index: 2; /* Текст над карточками */
+    z-index: 2; 
   }
 
   &__header {
@@ -56,7 +56,7 @@
     margin-left: -50vw;
     margin-right: -50vw;
     padding: 60px 0;
-    overflow: visible; /* Позволяем карточкам выходить за пределы */
+    overflow: visible;
 
     @media (max-width: 768px) {
       padding: 40px 0;
@@ -67,9 +67,9 @@
   &__row {
     display: flex;
     justify-content: center;
-    gap: 0; /* Убираем gap, используем negative margins */
+    gap: 0;
     margin-bottom: 30px;
-    width: calc(100% + 300px); /* Добавляем padding для компенсации смещения */
+    width: calc(100% + 300px);
 
     &:last-child {
       margin-bottom: 0;
@@ -82,26 +82,25 @@
 
     /* Второй ряд - смещение на половину карточки вправо */
     &--second {
-      transform: translateX(150px); /* Половина ширины карточки (300px/2) */
+      transform: translateX(150px);
 
       @media (max-width: 1024px) {
-        transform: translateX(125px); /* 250px/2 */
+        transform: translateX(125px);
       }
 
       @media (max-width: 768px) {
-        transform: translateX(100px); /* 200px/2 */
+        transform: translateX(100px);
       }
 
       @media (max-width: 480px) {
-        transform: translateX(75px); /* 150px/2 */
+        transform: translateX(75px);
       }
     }
 
-    /* Гарантируем, что карточки не отлипнут от краев на любых экранах */
     &::before {
       content: '';
-      flex: 0 0 150px; /* Компенсируем отрицательный margin первой карточки */
-      visibility: hidden; /* Скрываем, но оставляем место */
+      flex: 0 0 150px;
+      visibility: hidden; 
       
       @media (max-width: 1024px) {
         flex: 0 0 125px;
@@ -118,7 +117,7 @@
 
     &::after {
       content: '';
-      flex: 0 0 150px; /* Компенсируем отрицательный margin последней карточки */
+      flex: 0 0 150px;
       visibility: hidden;
       
       @media (max-width: 1024px) {
@@ -142,8 +141,8 @@
   /* Карточка партнера */
   &__card {
     flex: 0 0 auto;
-    width: 300px; /* Увеличили в 1.5 раза (было 200px) */
-    height: 180px; /* Увеличили пропорционально (120px * 1.5) */
+    width: 300px;
+    height: 180px;
     background: white;
     border-radius: 8px;
     display: flex;
@@ -152,28 +151,27 @@
     padding: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     position: relative;
-    margin: 0 10px; /* Добавляем отступы между карточками */
+    margin: 0 10px;
 
-    /* Создаем эффект "ухода" за края экрана для крайних карточек */
     &:first-child {
-      margin-left: -150px; /* Отрицательный margin = половина ширины карточки */
+      margin-left: -150px; 
     }
 
     &:last-child {
-      margin-right: -150px; /* Отрицательный margin = половина ширины карточки */
+      margin-right: -150px;
     }
 
     img {
-      max-width: 80%; /* Занимает 80% ширины карточки */
-      max-height: 70%; /* Занимает 70% высоты карточки */
+      max-width: 80%;
+      max-height: 70%;
       width: auto;
       height: auto;
       object-fit: contain;
       display: block;
-      position: absolute; /* Для точного центрирования */
+      position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%); /* Идеальное центрирование */
+      transform: translate(-50%, -50%);
     }
 
     @media (max-width: 1024px) {
@@ -223,12 +221,10 @@
   }
 }
 
-/* Чтобы избежать горизонтального скролла при выходящих за пределы элементах */
 body {
   overflow-x: hidden;
 }
 
-/* Гарантируем, что на очень широких экранах карточки будут масштабироваться */
 @media (min-width: 1600px) {
   .partners__card {
     width: 350px;

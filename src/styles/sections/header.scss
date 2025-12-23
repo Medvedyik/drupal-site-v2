@@ -1,7 +1,7 @@
 @use '../base/variables' as *;
 
 /* ==========================================================================
-   HEADER - MOBILE FIRST
+   HEADER
    ========================================================================== */
 
 /**
@@ -11,7 +11,7 @@
   position: relative;
   min-height: 100vh;
   color: white;
-  background-color: #050814; /* Фолбэк фон */
+  background-color: #050814; 
   overflow: hidden;
   
   /* Контейнер для центрирования */
@@ -19,6 +19,57 @@
     position: relative;
     z-index: 1;
     height: 100%;
+  }
+}
+
+/* Декорация */
+.header__decor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  opacity: 0.7;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  img {
+    width: 80%;
+    max-width: 800px; 
+    height: auto;
+    object-fit: contain;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Планшетная версия */
+@media (min-width: 768px) {
+  .header__decor {
+    opacity: 0.15;
+    
+    img {
+      width: 70%;
+      max-width: 900px;
+    }
+  }
+}
+
+/* Десктопная версия */
+@media (min-width: 1024px) {
+  .header__decor {
+    opacity: 0.8;
+    
+    img {
+      width: 60%;
+      max-width: 1000px;
+    }
   }
 }
 
@@ -72,7 +123,7 @@
 
 /* Контакты для мобильных */
 .header__contacts {
-  display: none; /* На мобильных скрываем, показываем только бургер */
+  display: none;
 }
 
 .header__phone {
@@ -118,7 +169,7 @@
   transition: 0.3s;
 }
 
-/* Десктопное меню - скрыто на мобильных */
+/* Десктопное меню */
 .header__menu {
   display: none;
 }
@@ -172,17 +223,17 @@
 .header__stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 1fr; /* ← ГЛАВНОЕ: все строки одинаковой высоты */
+  grid-auto-rows: 1fr;
   gap: 24px;
-  align-items: stretch; /* ← Растягиваем элементы по высоте */
+  align-items: stretch;
 }
 
 .header__stat {
   position: relative;
   padding-left: 12px;
-  display: flex; /* ← Используем flex для контроля высоты */
+  display: flex;
   flex-direction: column;
-  min-height: 100px; /* ← Минимальная высота для всех */
+  min-height: 100px;
 }
 
 .header__stat::before {
@@ -190,7 +241,7 @@
   position: absolute;
   left: -7px;
   top: 10px;
-  bottom: 17px; /* ← Линия от верха до низа блока */
+  bottom: 17px;
   width: 2px;
   background: #ff3b30;
 }
@@ -214,7 +265,7 @@
   font-size: 12px;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.75);
-  flex: 1; /* ← Текст занимает оставшееся пространство */
+  flex: 1; 
 }
 
 /* ==========================================================================
@@ -264,7 +315,6 @@
     padding: 20px 10px;
   }
   
-  /* Показываем контакты, скрываем бургер */
   .header__contacts {
     display: flex;
     align-items: center;
@@ -298,12 +348,12 @@
     }
   }
 
-  /* Контакты для мобильных - скрываем на десктопе */
+  /* Контакты для мобильных */
   .header__mobile-contacts {
     display: none;
   }
   
-  /* Ссылки меню - ВСЕ ОДИНАКОВЫЕ */
+  /* Ссылки меню */
   .header__menu-link {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
@@ -321,7 +371,7 @@
       content: '';
       position: absolute;
       left: 0;
-      bottom: -4px; /* Ближе к тексту */
+      bottom: -4px;
       width: 0;
       height: 2px;
       background: #ff3b30;
@@ -352,10 +402,10 @@
     opacity: 0.8;
   }
   
-  /* Выпадающее меню - ПРАВИЛЬНОЕ ПОЗИЦИОНИРОВАНИЕ */
+  /* Выпадающее меню */
   .header__dropdown {
     position: absolute;
-    top: calc(100% + 2px); /* Минимальный отступ, чтобы не было мертвой зоны */
+    top: calc(100% + 2px);
     left: 0;
     min-width: 220px;
     background: #ff3b30;
@@ -467,10 +517,10 @@
     }
     
     .header__contacts {
-      display: none; /* В мобильном меню контакты показываем внутри меню */
+      display: none; 
     }
     
-    /* Анимация бургера в крестик */
+    /* Анимация в крестик */
     .header__burger-line:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
     }
